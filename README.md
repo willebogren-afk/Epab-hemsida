@@ -25,21 +25,16 @@ redigera `src/lib/site.ts` — sidorna byggs från den filen.
 
 ## Lägga in bilder
 
-Maskinbilderna saknas ännu. Sajten visar en märkt platshållare som beskriver
-vilket foto som hör var, så inget går sönder under tiden.
+Maskinbilderna saknas ännu. Sajten visar en märkt platshållare som anger vilket
+foto och vilket filnamn som hör var, så inget går sönder under tiden.
 
-Så gör du:
+Lägg bara filerna i `public/maskinpark/` med de namn som står i
+[`public/maskinpark/README.md`](public/maskinpark/README.md) — `Photo`-komponenten
+kontrollerar själv vilka filer som finns och byter från platshållare till bild.
+Ingen kodändring behövs.
 
-1. Lägg bildfilerna i `public/maskinpark/` (t.ex. `sopning.jpg`).
-2. Öppna `src/lib/site.ts` och byt `image: null` mot sökvägen, utan `public`:
-
-   ```ts
-   image: "/maskinpark/sopning.jpg",
-   ```
-
-3. Kontrollera att `imageAlt` beskriver bilden — den läses upp av skärmläsare.
-
-Bilder bör vara minst 1600 px breda och sparas som `.jpg` eller `.webp`.
+Bilder bör vara minst 1600 px breda. Vill du använda andra filnamn eller `.webp`
+uppdaterar du `image`-fältet i `src/lib/site.ts`.
 
 ## Kontaktformuläret
 

@@ -1,6 +1,9 @@
+import fs from "node:fs";
+import path from "node:path";
 import Image from "next/image";
 
 type PhotoProps = {
+  /** Sökväg under /public, t.ex. "/maskinpark/sopning.jpg" */
   src: string | null;
   alt: string;
   /** Tailwind aspect-ratio class, e.g. "aspect-[4/3]" */
@@ -11,9 +14,12 @@ type PhotoProps = {
 };
 
 /**
- * Renders the photo when the file exists, otherwise a labelled slot that names
- * the exact shot needed — so a half-finished gallery still reads as intentional
- * and nobody has to guess which image belongs where.
+ * Renders the photo when the file is actually present in /public, otherwise a
+ * labelled slot naming the exact shot needed. Checking the filesystem here means
+ * dropping a correctly named file into /public is the only step required — no
+ * code edit, and never a broken image if a file is missing.
+ *
+ * Server component only: it reads from disk at build/prerender time.
  */
 export function Photo({
   src,
@@ -23,7 +29,9 @@ export function Photo({
   priority = false,
   sizes = "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw",
 }: PhotoProps) {
-  if (src) {
+  const available = src !== null && existsInPublic(src);
+
+  if (available) {
     return (
       <div className={`relative overflow-hidden ${ratio} ${className}`}>
         <Image
@@ -45,9 +53,20 @@ export function Photo({
       <span className="font-display text-sm tracking-[0.18em] text-[var(--color-text-muted)] uppercase">
         Bild saknas
       </span>
-      <span className="text-sm leading-snug text-[var(--color-text-muted)]">
-        {alt}
+      <span className="flex flex-col gap-1 text-sm leading-snug text-[var(--color-text-muted)]">
+        <span>{alt}</span>
+        {src && (
+          <code className="text-xs opacity-70">public{src}</code>
+        )}
       </span>
     </div>
   );
+}
+
+function existsInPublic(src: string) {
+  try {
+    return fs.existsSync(path.join(process.cwd(), "public", src));
+  } catch {
+    return false;
+  }
 }

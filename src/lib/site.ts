@@ -132,7 +132,7 @@ export type Machine = {
   weight: string;
   attachments: string[];
   note: string;
-  /* Bildfil i /public/maskinpark/. Sätt till null tills fotot är på plats. */
+  /* Sökväg under /public. Visas automatiskt så fort filen finns på plats. */
   image: string | null;
   imageAlt: string;
 };
@@ -144,7 +144,7 @@ export const machines: Machine[] = [
     weight: "ca 14 ton",
     attachments: ["Holms sopvals", "Vattentank", "Sidoborste"],
     note: "Vårsopning av vägar och parkeringar med dammbindning.",
-    image: null,
+    image: "/maskinpark/sopning-hjullastare.jpg",
     imageAlt:
       "Volvo hjullastare med Holms sopaggregat som sopar en villagata en solig vårdag.",
   },
@@ -154,7 +154,7 @@ export const machines: Machine[] = [
     weight: "ca 14 ton",
     attachments: ["Vikplog", "Sandspridare", "Extraljusramp"],
     note: "Vinterjour, plogning och halkbekämpning dygnet runt.",
-    image: null,
+    image: "/maskinpark/plogning-hjullastare.jpg",
     imageAlt:
       "Volvo hjullastare med vikplog som plogar en landsväg i mörker under vintern.",
   },
@@ -164,7 +164,7 @@ export const machines: Machine[] = [
     weight: "ca 18 ton",
     attachments: ["Hyvelblad", "GPS-styrning", "Ripper"],
     note: "Hyvling och profilering av grusvägar och planer.",
-    image: null,
+    image: "/maskinpark/vaghyvel.jpg",
     imageAlt:
       "Caterpillar väghyvel som profilerar en nyanlagd grusväg.",
   },
@@ -174,7 +174,7 @@ export const machines: Machine[] = [
     weight: "ca 25 ton",
     attachments: ["Stubbgrip", "Rototilt", "Skopor"],
     note: "Markberedning, stubbrytning och röjning i skogsmark.",
-    image: null,
+    image: "/maskinpark/stubbgrip-bandgravare.jpg",
     imageAlt:
       "Orange EPAB-bandgrävare med stubbgrip lyft högt över ett hygge.",
   },
@@ -184,7 +184,7 @@ export const machines: Machine[] = [
     weight: "ca 30 ton",
     attachments: ["Långbom", "Planeringsskopa", "Rototilt"],
     note: "Djupschakt, dammarbeten och massförflyttning.",
-    image: null,
+    image: "/maskinpark/langgravare-schakt.jpg",
     imageAlt:
       "Två orange EPAB-grävmaskiner som schaktar lermassor på ett industriområde.",
   },
@@ -194,7 +194,7 @@ export const machines: Machine[] = [
     weight: "3–8 ton",
     attachments: ["Rototilt", "Kabelskopa", "Plattvibrator"],
     note: "Trånga tomter, dränering och finplanering.",
-    image: null,
+    image: "/maskinpark/kompaktgravare.jpg",
     imageAlt: "Kompaktgrävare i arbete på en villatomt.",
   },
 ];

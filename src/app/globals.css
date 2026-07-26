@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+:root {
+  /* Ink — near-black with a warm, diesel-soot undertone (matches the cab black on the fleet) */
+  --color-ink: #16130f;
+  --color-ink-2: #221d17;
+  --color-ink-3: #332b21;
+
+  /* Paper — warm concrete/gravel neutrals, never pure white */
+  --color-paper: #f6f2ea;
+  --color-paper-2: #ece5d6;
+  --color-paper-3: #ddd3bd;
+
+  /* Accent — the safety orange off the boom paint */
+  --color-accent: #e85a0c;
+  --color-accent-bright: #ff7a24;
+  --color-accent-deep: #a8410a;
+
+  --color-text: #1c1712;
+  --color-text-muted: #5c5245;
+  --color-text-on-ink: #f6f2ea;
+  --color-text-on-ink-muted: #b6a996;
+
+  --color-border: #d9cfb9;
+  --color-border-on-ink: #3d352a;
+
+  --font-display: var(--font-bebas), "Arial Narrow", sans-serif;
+  --font-body: var(--font-source-sans), system-ui, sans-serif;
+}
+
+@theme inline {
+  --color-ink: var(--color-ink);
+  --color-ink-2: var(--color-ink-2);
+  --color-ink-3: var(--color-ink-3);
+  --color-paper: var(--color-paper);
+  --color-paper-2: var(--color-paper-2);
+  --color-paper-3: var(--color-paper-3);
+  --color-accent: var(--color-accent);
+  --color-accent-bright: var(--color-accent-bright);
+  --color-accent-deep: var(--color-accent-deep);
+  --color-text: var(--color-text);
+  --color-text-muted: var(--color-text-muted);
+  --color-text-on-ink: var(--color-text-on-ink);
+  --color-text-on-ink-muted: var(--color-text-on-ink-muted);
+  --color-border: var(--color-border);
+  --color-border-on-ink: var(--color-border-on-ink);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}
+
+* {
+  scrollbar-color: var(--color-accent) var(--color-paper-2);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Hazard stripe — the site's signature motif, lifted straight off warning
+   chevrons on the fleet. Used sparingly as a structural marker, never as
+   decoration. */
+.hazard-stripe {
+  background-image: repeating-linear-gradient(
+    135deg,
+    var(--color-ink) 0px,
+    var(--color-ink) 14px,
+    var(--color-accent) 14px,
+    var(--color-accent) 28px
+  );
+}
+
+.hazard-stripe-thin {
+  background-image: repeating-linear-gradient(
+    135deg,
+    var(--color-ink) 0px,
+    var(--color-ink) 7px,
+    var(--color-accent) 7px,
+    var(--color-accent) 14px
+  );
+}
+
+.text-balance {
+  text-wrap: balance;
+}

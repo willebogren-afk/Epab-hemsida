@@ -20,7 +20,7 @@ export function SiteHeader() {
             className="flex cursor-pointer items-center focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent-bright)]"
             aria-label={`${site.shortName} — till startsidan`}
           >
-            <Wordmark className="h-11 w-auto text-[var(--color-on-brand)] sm:h-12" />
+            <Wordmark mono className="h-9 w-auto text-[var(--color-on-brand)] sm:h-10" />
           </Link>
 
           <nav aria-label="Huvudmeny" className="hidden items-center gap-8 lg:flex">

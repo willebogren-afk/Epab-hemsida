@@ -7,6 +7,10 @@
   --color-brand-dark: #4a1b04;
   --color-brand-tint: #8f3405;
   --color-accent: #e85a0c;
+
+  /* Logotypens egna färger — hör till märket, inte till sajtens tema. */
+  --color-logo-red: #7d2135;
+  --color-logo-ink: #1c1a1a;
   --color-accent-bright: #ff7a24;
 
   --color-paper: #ffffff;

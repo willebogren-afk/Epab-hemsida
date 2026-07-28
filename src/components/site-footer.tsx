@@ -7,7 +7,7 @@ export function SiteFooter() {
     <footer className="bg-[var(--color-brand)] text-[var(--color-on-brand)]">
       <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:grid-cols-2 sm:px-8 lg:grid-cols-4">
         <div className="sm:col-span-2 lg:col-span-1">
-          <Wordmark className="h-12 w-auto text-[var(--color-on-brand)]" />
+          <Wordmark mono className="h-11 w-auto text-[var(--color-on-brand)]" />
           <p className="mt-6 max-w-xs leading-relaxed text-[var(--color-on-brand-muted)]">
             Mark, väg och skog i Kalmar län sedan 2009. Egna maskiner, egna
             förare och jour när vintern kräver det.

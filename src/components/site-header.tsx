@@ -2,17 +2,55 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { nav, site } from "@/lib/site";
 import { Wordmark } from "./wordmark";
+
+/* Wordmarken ritas i --color-text/--color-text-muted. På den mörka listen
+   pekas de om till ink-varianterna istället för att SVG:n behöver en egen
+   färgprop. */
+const wordmarkOnInk =
+  "[--color-text:var(--color-text-on-ink)] [--color-text-muted:var(--color-text-on-ink-muted)]";
 
 export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [menuPathname, setMenuPathname] = useState(pathname);
+
+  /* Menylänkarna stänger sig själva via onClick, men navigering kan också ske
+     med bakåtknappen medan menyn ligger öppen. Justeringen görs under render
+     istället för i en effekt — annars hinner den stängda menyn måla upp sig en
+     gång på den nya sidan. */
+  if (pathname !== menuPathname) {
+    setMenuPathname(pathname);
+    setOpen(false);
+  }
+
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
+
+  /* Menyn täcker hela skärmen, så sidan bakom får inte gå att scrolla. */
+  useEffect(() => {
+    if (!open) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [open]);
 
   return (
     <header className="sticky top-0 z-50">
-      <div className="hidden bg-[var(--color-ink)] md:block">
+      <div className="hidden bg-[var(--color-ink-2)] md:block">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-2 text-[0.8125rem] font-semibold tracking-[0.08em] text-[var(--color-text-on-ink-muted)] uppercase">
           <span>
             {site.address.street}, {site.address.zip} {site.address.city}
@@ -32,14 +70,14 @@ export function SiteHeader() {
         </div>
       </div>
 
-      <div className="border-b-2 border-[var(--color-ink)] bg-[var(--color-paper)]/95 backdrop-blur-sm">
+      <div className="bg-[var(--color-ink)] text-[var(--color-text-on-ink)]">
         <div className="mx-auto flex max-w-7xl items-stretch justify-between gap-4 px-6">
           <Link
             href="/"
             className="flex cursor-pointer items-center py-4 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)]"
             aria-label={`${site.shortName} — till startsidan`}
           >
-            <Wordmark className="h-9 w-auto" />
+            <Wordmark className={`h-9 w-auto ${wordmarkOnInk}`} />
           </Link>
 
           <nav
@@ -47,10 +85,7 @@ export function SiteHeader() {
             className="hidden items-stretch gap-1 lg:flex"
           >
             {nav.map((item) => {
-              const active =
-                item.href === "/"
-                  ? pathname === "/"
-                  : pathname.startsWith(item.href);
+              const active = isActive(item.href);
               return (
                 <Link
                   key={item.href}
@@ -58,17 +93,15 @@ export function SiteHeader() {
                   aria-current={active ? "page" : undefined}
                   className={`relative flex cursor-pointer items-center px-5 font-display text-lg tracking-[0.06em] uppercase transition-colors duration-200 focus-visible:outline-3 focus-visible:outline-offset-[-3px] focus-visible:outline-[var(--color-accent)] ${
                     active
-                      ? "text-[var(--color-text)]"
-                      : "text-[var(--color-text-muted)] hover:text-[var(--color-text)]"
+                      ? "text-[var(--color-text-on-ink)]"
+                      : "text-[var(--color-text-on-ink-muted)] hover:text-[var(--color-text-on-ink)]"
                   }`}
                 >
                   {item.label}
                   <span
                     aria-hidden="true"
-                    className={`absolute inset-x-3 bottom-0 h-1 transition-opacity duration-200 ${
-                      active
-                        ? "bg-[var(--color-accent)] opacity-100"
-                        : "bg-[var(--color-accent)] opacity-0"
+                    className={`absolute inset-x-3 bottom-0 h-1 bg-[var(--color-accent)] transition-opacity duration-200 ${
+                      active ? "opacity-100" : "opacity-0"
                     }`}
                   />
                 </Link>
@@ -79,7 +112,7 @@ export function SiteHeader() {
           <div className="flex items-center gap-3">
             <a
               href={site.phoneHref}
-              className="hidden cursor-pointer items-center gap-3 bg-[var(--color-ink)] px-5 py-3 font-display text-lg tracking-[0.06em] text-[var(--color-text-on-ink)] uppercase transition-colors duration-200 hover:bg-[var(--color-accent)] hover:text-[var(--color-ink)] focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)] sm:flex"
+              className="hidden cursor-pointer items-center gap-3 bg-[var(--color-accent)] px-5 py-3 font-display text-lg tracking-[0.06em] text-[var(--color-ink)] uppercase transition-colors duration-200 hover:bg-[var(--color-accent-bright)] focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-text-on-ink)] sm:flex"
             >
               <PhoneIcon className="h-5 w-5" />
               {site.phone}
@@ -87,19 +120,13 @@ export function SiteHeader() {
 
             <button
               type="button"
-              onClick={() => setOpen((v) => !v)}
+              onClick={() => setOpen(true)}
               aria-expanded={open}
               aria-controls="mobilmeny"
-              className="flex min-h-[44px] min-w-[44px] cursor-pointer items-center justify-center border-2 border-[var(--color-ink)] px-3 font-display text-base tracking-[0.06em] uppercase transition-colors duration-200 hover:bg-[var(--color-ink)] hover:text-[var(--color-text-on-ink)] focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)] lg:hidden"
+              className="flex min-h-[44px] min-w-[44px] cursor-pointer items-center justify-center border-2 border-[var(--color-border-on-ink)] px-3 transition-colors duration-200 hover:border-[var(--color-accent)] hover:text-[var(--color-accent-bright)] focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)] lg:hidden"
             >
-              <span className="sr-only">
-                {open ? "Stäng meny" : "Öppna meny"}
-              </span>
-              {open ? (
-                <CloseIcon className="h-6 w-6" />
-              ) : (
-                <MenuIcon className="h-6 w-6" />
-              )}
+              <span className="sr-only">Öppna meny</span>
+              <MenuIcon className="h-6 w-6" />
             </button>
           </div>
         </div>
@@ -107,59 +134,89 @@ export function SiteHeader() {
 
       <div className="hazard-stripe-thin h-1.5" aria-hidden="true" />
 
-      {open && (
-        <nav
-          id="mobilmeny"
-          aria-label="Mobilmeny"
-          className="border-b-2 border-[var(--color-ink)] bg-[var(--color-paper)] lg:hidden"
-        >
-          <ul className="mx-auto max-w-7xl px-6 py-2">
-            {nav.map((item) => {
-              const active =
-                item.href === "/"
-                  ? pathname === "/"
-                  : pathname.startsWith(item.href);
-              return (
-                <li
-                  key={item.href}
-                  className="border-b border-[var(--color-border)] last:border-b-0"
-                >
-                  <Link
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    aria-current={active ? "page" : undefined}
-                    className={`flex min-h-[52px] cursor-pointer items-center gap-3 font-display text-xl tracking-[0.06em] uppercase transition-colors duration-200 focus-visible:outline-3 focus-visible:outline-offset-[-3px] focus-visible:outline-[var(--color-accent)] ${
-                      active
-                        ? "text-[var(--color-accent-deep)]"
-                        : "text-[var(--color-text)]"
-                    }`}
-                  >
-                    <span
-                      aria-hidden="true"
-                      className={`h-6 w-1.5 ${
-                        active
-                          ? "bg-[var(--color-accent)]"
-                          : "bg-[var(--color-border)]"
-                      }`}
-                    />
-                    {item.label}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-          <div className="mx-auto max-w-7xl px-6 pb-5">
-            <a
-              href={site.phoneHref}
-              className="flex min-h-[52px] cursor-pointer items-center justify-center gap-3 bg-[var(--color-accent)] font-display text-xl tracking-[0.06em] text-[var(--color-ink)] uppercase transition-colors duration-200 hover:bg-[var(--color-accent-deep)] focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-ink)]"
-            >
-              <PhoneIcon className="h-5 w-5" />
-              Ring {site.phone}
-            </a>
-          </div>
-        </nav>
-      )}
+      {open && <MobileMenu isActive={isActive} onClose={() => setOpen(false)} />}
     </header>
+  );
+}
+
+/* Helskärmsmeny: listan tar hela ytan istället för att trängas under listen,
+   vilket ger tumvänliga träffytor och plats för kontaktvägarna längst ned. */
+function MobileMenu({
+  isActive,
+  onClose,
+}: {
+  isActive: (href: string) => boolean;
+  onClose: () => void;
+}) {
+  return (
+    <div
+      id="mobilmeny"
+      className="fixed inset-0 z-[60] flex flex-col overflow-y-auto bg-[var(--color-paper)] lg:hidden"
+    >
+      <div className="flex items-center justify-between gap-4 border-b-2 border-[var(--color-ink)] px-6 py-4">
+        <Wordmark className="h-9 w-auto" />
+        <button
+          type="button"
+          onClick={onClose}
+          autoFocus
+          className="flex min-h-[44px] min-w-[44px] cursor-pointer items-center justify-center border-2 border-[var(--color-ink)] px-3 transition-colors duration-200 hover:bg-[var(--color-ink)] hover:text-[var(--color-text-on-ink)] focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)]"
+        >
+          <span className="sr-only">Stäng meny</span>
+          <CloseIcon className="h-6 w-6" />
+        </button>
+      </div>
+
+      <nav aria-label="Mobilmeny" className="flex-1 px-6 py-6">
+        <ul>
+          {nav.map((item) => {
+            const active = isActive(item.href);
+            return (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  onClick={onClose}
+                  aria-current={active ? "page" : undefined}
+                  className={`flex min-h-[64px] cursor-pointer items-center gap-4 font-display text-4xl tracking-[0.02em] uppercase transition-colors duration-200 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)] ${
+                    active
+                      ? "text-[var(--color-accent-deep)]"
+                      : "text-[var(--color-text)] hover:text-[var(--color-accent-deep)]"
+                  }`}
+                >
+                  <span
+                    aria-hidden="true"
+                    className={`h-8 w-1.5 shrink-0 ${
+                      active
+                        ? "bg-[var(--color-accent)]"
+                        : "bg-[var(--color-border)]"
+                    }`}
+                  />
+                  {item.label}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+
+      <div className="border-t-2 border-[var(--color-ink)] px-6 py-6">
+        <a
+          href={site.phoneHref}
+          className="flex min-h-[56px] cursor-pointer items-center justify-center gap-3 bg-[var(--color-accent)] font-display text-xl tracking-[0.06em] text-[var(--color-ink)] uppercase transition-colors duration-200 hover:bg-[var(--color-accent-deep)] focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-ink)]"
+        >
+          <PhoneIcon className="h-5 w-5" />
+          Ring {site.phone}
+        </a>
+        <p className="mt-4 text-center text-[var(--color-text-muted)]">
+          <a
+            href={`mailto:${site.email}`}
+            className="cursor-pointer transition-colors duration-200 hover:text-[var(--color-accent-deep)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
+          >
+            {site.email}
+          </a>
+          <span className="mt-1 block">Vinterjour dygnet runt</span>
+        </p>
+      </div>
+    </div>
   );
 }
 

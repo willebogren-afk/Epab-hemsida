@@ -63,6 +63,65 @@ export function Photo({
   );
 }
 
+type BackdropProps = {
+  /** Sökväg under /public. Saknas filen faller ytan tillbaka på massiv ink. */
+  src: string | null;
+  alt: string;
+  className?: string;
+  /** Extra klasser på mörkfiltret, t.ex. för att ljusa upp vid hover. */
+  overlayClassName?: string;
+  /** Layoutklasser på innehållslagret. h-full är redan satt. */
+  contentClassName?: string;
+  priority?: boolean;
+  sizes?: string;
+  children: React.ReactNode;
+};
+
+/**
+ * Foto som bakgrund med mörkfilter över, och innehållet ovanpå. Det är
+ * grundmotivet på sajten: hero, sidhuvuden och tjänstebrickorna är alla samma
+ * yta i olika storlek.
+ *
+ * Filtret ligger på för att texten ska klara kontrastkravet oavsett hur ljust
+ * fotot är — det är därför det inte går att stänga av, bara ljusa upp något.
+ *
+ * Server component only: den läser från disk vid build/prerender.
+ */
+export function PhotoBackdrop({
+  src,
+  alt,
+  className = "",
+  overlayClassName = "",
+  contentClassName = "",
+  priority = false,
+  sizes = "100vw",
+  children,
+}: BackdropProps) {
+  const available = src !== null && existsInPublic(src);
+
+  return (
+    <div
+      className={`relative isolate overflow-hidden bg-[var(--color-ink)] text-[var(--color-text-on-ink)] ${className}`}
+    >
+      {available && (
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes={sizes}
+          priority={priority}
+          className="object-cover"
+        />
+      )}
+      <div
+        aria-hidden="true"
+        className={`absolute inset-0 bg-[var(--color-ink)]/70 transition-colors duration-300 ${overlayClassName}`}
+      />
+      <div className={`relative h-full ${contentClassName}`}>{children}</div>
+    </div>
+  );
+}
+
 function existsInPublic(src: string) {
   try {
     return fs.existsSync(path.join(process.cwd(), "public", src));

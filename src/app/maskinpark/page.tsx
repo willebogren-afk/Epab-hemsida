@@ -17,6 +17,8 @@ export default function MaskinparkPage() {
         eyebrow="Maskinpark"
         title="Maskinerna vi kör"
         lead="Alla maskiner är våra egna och körs av våra egna förare. Aggregaten byts efter säsong, så samma hjullastare sopar på våren och plogar på vintern."
+        image={machines[2].image}
+        imageAlt={machines[2].imageAlt}
       />
 
       <div className="mx-auto max-w-7xl px-6 py-16 sm:py-20">

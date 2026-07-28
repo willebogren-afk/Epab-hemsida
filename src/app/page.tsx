@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Photo } from "@/components/photo";
+import { Photo, PhotoBackdrop } from "@/components/photo";
+import { PhotoTile } from "@/components/photo-tile";
 import { machines, services, site } from "@/lib/site";
 
 export default function Home() {
@@ -7,7 +8,7 @@ export default function Home() {
     <>
       <Hero />
       <SeasonBand />
-      <ServicesGrid />
+      <ServicesStack />
       <FleetTeaser />
       <ContactCta />
     </>
@@ -16,70 +17,58 @@ export default function Home() {
 
 function Hero() {
   return (
-    <section className="border-b-2 border-[var(--color-ink)] bg-[var(--color-ink)] text-[var(--color-text-on-ink)]">
-      <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 sm:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-14">
-        <div>
-          <p className="flex items-center gap-3 font-display text-sm tracking-[0.22em] text-[var(--color-accent-bright)] uppercase">
-            <span className="h-4 w-1.5 bg-[var(--color-accent)]" aria-hidden="true" />
-            Fliseryd · Oskarshamn · Mönsterås
-          </p>
-          <h1 className="mt-5 font-display text-[clamp(3rem,9vw,6.5rem)] leading-[0.88] tracking-[-0.015em] uppercase text-balance">
-            Vi flyttar
-            <br />
-            massor.
-            <br />
-            <span className="text-[var(--color-accent-bright)]">Och snö.</span>
-          </h1>
-          <p className="mt-7 max-w-xl text-lg leading-relaxed text-[var(--color-text-on-ink-muted)]">
-            EPAB Maskintjänst är entreprenören som kör hela året: schakt och
-            väghållning under barmark, plog och sand när vintern slår till. Egna
-            maskiner, egna förare, samma telefonnummer dygnet runt.
-          </p>
+    <PhotoBackdrop
+      src={machines[4].image}
+      alt={machines[4].imageAlt}
+      priority
+      sizes="100vw"
+      className="border-b-2 border-[var(--color-ink)]"
+      overlayClassName="bg-[var(--color-ink)]/78"
+    >
+      <div className="mx-auto flex min-h-[78vh] max-w-4xl flex-col items-center justify-center px-6 py-20 text-center sm:py-24">
+        <p className="flex items-center gap-3 font-display text-sm tracking-[0.22em] text-[var(--color-accent-bright)] uppercase">
+          <span className="h-4 w-1.5 bg-[var(--color-accent)]" aria-hidden="true" />
+          Fliseryd · Oskarshamn · Mönsterås
+        </p>
 
-          <div className="mt-9 flex flex-wrap gap-3">
-            <Link
-              href="/kontakt"
-              className="flex min-h-[52px] cursor-pointer items-center bg-[var(--color-accent)] px-7 font-display text-xl tracking-[0.06em] text-[var(--color-ink)] uppercase transition-colors duration-200 hover:bg-[var(--color-accent-bright)] focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[var(--color-accent-bright)]"
-            >
-              Begär offert
-            </Link>
-            <a
-              href={site.phoneHref}
-              className="flex min-h-[52px] cursor-pointer items-center border-2 border-[var(--color-text-on-ink-muted)] px-7 font-display text-xl tracking-[0.06em] uppercase transition-colors duration-200 hover:border-[var(--color-accent-bright)] hover:text-[var(--color-accent-bright)] focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[var(--color-accent-bright)]"
-            >
-              Ring {site.phone}
-            </a>
-          </div>
+        <h1 className="mt-6 font-display text-[clamp(3rem,10vw,7rem)] leading-[0.88] tracking-[-0.015em] uppercase text-balance">
+          Vi flyttar massor.{" "}
+          <span className="text-[var(--color-accent-bright)]">Och snö.</span>
+        </h1>
+
+        <p className="mt-7 max-w-2xl text-lg leading-relaxed text-[var(--color-text-on-ink)]/90">
+          EPAB Maskintjänst är entreprenören som kör hela året: schakt och
+          väghållning under barmark, plog och sand när vintern slår till. Egna
+          maskiner, egna förare, samma telefonnummer dygnet runt.
+        </p>
+
+        <div className="mt-9 flex flex-wrap justify-center gap-3">
+          <Link
+            href="/kontakt"
+            className="flex min-h-[52px] cursor-pointer items-center bg-[var(--color-accent)] px-7 font-display text-xl tracking-[0.06em] text-[var(--color-ink)] uppercase transition-colors duration-200 hover:bg-[var(--color-accent-bright)] focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[var(--color-accent-bright)]"
+          >
+            Begär offert
+          </Link>
+          <a
+            href={site.phoneHref}
+            className="flex min-h-[52px] cursor-pointer items-center border-2 border-[var(--color-text-on-ink-muted)] px-7 font-display text-xl tracking-[0.06em] uppercase transition-colors duration-200 hover:border-[var(--color-accent-bright)] hover:text-[var(--color-accent-bright)] focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[var(--color-accent-bright)]"
+          >
+            Ring {site.phone}
+          </a>
         </div>
 
-        <div className="grid grid-cols-2 gap-3">
-          {/* Wide slot takes a landscape frame; the two squares take the
-              portrait shots, which crop to square without losing the machine. */}
-          <Photo
-            src={machines[5].image}
-            alt={machines[5].imageAlt}
-            ratio="aspect-[16/10]"
-            priority
-            className="col-span-2 border-2 border-[var(--color-border-on-ink)]"
-            sizes="(min-width: 1024px) 45vw, 100vw"
+        <a
+          href="#tjanster"
+          className="mt-14 flex cursor-pointer flex-col items-center gap-2 font-display text-sm tracking-[0.22em] uppercase text-[var(--color-text-on-ink-muted)] transition-colors duration-200 hover:text-[var(--color-accent-bright)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
+        >
+          Läs mer
+          <span
+            aria-hidden="true"
+            className="scroll-cue h-10 w-px bg-[var(--color-accent)]"
           />
-          <Photo
-            src={machines[0].image}
-            alt={machines[0].imageAlt}
-            ratio="aspect-square"
-            className="border-2 border-[var(--color-border-on-ink)]"
-            sizes="(min-width: 1024px) 22vw, 50vw"
-          />
-          <Photo
-            src={machines[1].image}
-            alt={machines[1].imageAlt}
-            ratio="aspect-square"
-            className="border-2 border-[var(--color-border-on-ink)]"
-            sizes="(min-width: 1024px) 22vw, 50vw"
-          />
-        </div>
+        </a>
       </div>
-    </section>
+    </PhotoBackdrop>
   );
 }
 
@@ -131,87 +120,54 @@ function SeasonBand() {
   );
 }
 
-function ServicesGrid() {
+function ServicesStack() {
   return (
-    <section className="border-b-2 border-[var(--color-ink)]">
-      <div className="mx-auto max-w-7xl px-6 py-16 sm:py-20">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <div>
-            <p className="flex items-center gap-3 font-display text-sm tracking-[0.22em] text-[var(--color-accent-deep)] uppercase">
-              <span
-                className="h-4 w-1.5 bg-[var(--color-accent)]"
-                aria-hidden="true"
+    <section id="tjanster" className="scroll-mt-32 border-b-2 border-[var(--color-ink)]">
+      <div className="mx-auto max-w-5xl px-6 py-16 sm:py-20">
+        <div className="flex flex-col items-center text-center">
+          <p className="flex items-center gap-3 font-display text-sm tracking-[0.22em] text-[var(--color-accent-deep)] uppercase">
+            <span className="h-4 w-1.5 bg-[var(--color-accent)]" aria-hidden="true" />
+            Vad vi gör
+          </p>
+          <h2 className="mt-4 max-w-2xl font-display text-4xl leading-[0.95] uppercase text-balance sm:text-5xl">
+            Uppdragen vi tar oss an
+          </h2>
+        </div>
+
+        <ul className="mt-14 space-y-14">
+          {services.map((s, i) => (
+            <li key={s.slug}>
+              <PhotoTile
+                href={`/tjanster#${s.slug}`}
+                label={s.title}
+                caption={s.summary}
+                src={s.image}
+                alt={s.imageAlt}
+                eyebrow={s.season}
+                priority={i === 0}
+                sizes="(min-width: 1024px) 60vw, 100vw"
               />
-              Vad vi gör
-            </p>
-            <h2 className="mt-4 max-w-2xl font-display text-4xl leading-[0.95] uppercase sm:text-5xl">
-              Uppdragen vi tar oss an
-            </h2>
-          </div>
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-16 border-2 border-[var(--color-ink)] bg-[var(--color-paper-2)] p-8 text-center sm:p-10">
+          <h3 className="font-display text-3xl leading-tight uppercase sm:text-4xl">
+            Passar inget av det här?
+          </h3>
+          <p className="mx-auto mt-4 max-w-2xl leading-relaxed text-[var(--color-text-muted)]">
+            Beskriv jobbet så säger vi vad som krävs — och om vi är rätt
+            entreprenör för det.
+          </p>
           <Link
             href="/tjanster"
-            className="cursor-pointer border-b-2 border-[var(--color-accent)] pb-1 font-display text-lg tracking-[0.06em] uppercase transition-colors duration-200 hover:text-[var(--color-accent-deep)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
+            className="mt-7 inline-flex min-h-[52px] cursor-pointer items-center bg-[var(--color-ink)] px-7 font-display text-xl tracking-[0.06em] text-[var(--color-text-on-ink)] uppercase transition-colors duration-200 hover:bg-[var(--color-accent)] hover:text-[var(--color-ink)] focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[var(--color-accent)]"
           >
             Alla tjänster i detalj
           </Link>
         </div>
-
-        <ul className="mt-12 grid gap-px bg-[var(--color-border)] sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((s) => (
-            <li key={s.slug} className="bg-[var(--color-paper)]">
-              <Link
-                href={`/tjanster#${s.slug}`}
-                className="group flex h-full cursor-pointer flex-col p-7 transition-colors duration-200 hover:bg-[var(--color-paper-2)] focus-visible:outline-3 focus-visible:outline-offset-[-3px] focus-visible:outline-[var(--color-accent)]"
-              >
-                <span className="font-display text-xs tracking-[0.2em] text-[var(--color-text-muted)] uppercase">
-                  {s.season}
-                </span>
-                <h3 className="mt-3 font-display text-2xl leading-tight uppercase">
-                  {s.title}
-                </h3>
-                <p className="mt-3 flex-1 leading-relaxed text-[var(--color-text-muted)]">
-                  {s.summary}
-                </p>
-                <span
-                  aria-hidden="true"
-                  className="mt-6 h-1 w-10 bg-[var(--color-accent)] transition-all duration-200 group-hover:w-20"
-                />
-              </Link>
-            </li>
-          ))}
-          <ServicesFiller />
-        </ul>
       </div>
     </section>
-  );
-}
-
-/* An odd service count leaves dead cells in the last grid row. Fill them with
-   the call to action instead of leaving a hole. */
-function ServicesFiller() {
-  const spanAtLg = ["lg:col-span-3", "lg:col-span-2", "lg:col-span-1"][
-    services.length % 3
-  ];
-  const spanAtSm = ["sm:col-span-2", "sm:col-span-1"][services.length % 2];
-
-  return (
-    <li className={`bg-[var(--color-paper-2)] ${spanAtSm} ${spanAtLg}`}>
-      <div className="flex h-full flex-col justify-center p-7">
-        <p className="font-display text-2xl leading-tight uppercase">
-          Passar inget av det här?
-        </p>
-        <p className="mt-3 leading-relaxed text-[var(--color-text-muted)]">
-          Beskriv jobbet så säger vi vad som krävs — och om vi är rätt
-          entreprenör för det.
-        </p>
-        <Link
-          href="/kontakt"
-          className="mt-5 cursor-pointer self-start border-b-2 border-[var(--color-accent)] pb-1 font-display text-lg tracking-[0.06em] uppercase transition-colors duration-200 hover:text-[var(--color-accent-deep)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
-        >
-          Hör av dig
-        </Link>
-      </div>
-    </li>
   );
 }
 
@@ -221,10 +177,7 @@ function FleetTeaser() {
       <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 sm:py-20 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
         <div>
           <p className="flex items-center gap-3 font-display text-sm tracking-[0.22em] text-[var(--color-accent-deep)] uppercase">
-            <span
-              className="h-4 w-1.5 bg-[var(--color-accent)]"
-              aria-hidden="true"
-            />
+            <span className="h-4 w-1.5 bg-[var(--color-accent)]" aria-hidden="true" />
             Maskinparken
           </p>
           <h2 className="mt-4 font-display text-4xl leading-[0.95] uppercase sm:text-5xl">

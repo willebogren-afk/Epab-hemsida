@@ -43,6 +43,9 @@ export type Service = {
   summary: string;
   details: string[];
   season: "Året runt" | "Vinter" | "Barmark";
+  /* Sökväg under /public. Visas automatiskt så fort filen finns på plats. */
+  image: string | null;
+  imageAlt: string;
 };
 
 export const services: Service[] = [
@@ -58,6 +61,9 @@ export const services: Service[] = [
       "Massutbyte och terrassering",
     ],
     season: "Året runt",
+    image: "/maskinpark/langgravare.jpg",
+    imageAlt:
+      "Två orange EPAB-grävmaskiner som schaktar lermassor på ett industriområde.",
   },
   {
     slug: "vaghallning",
@@ -71,6 +77,9 @@ export const services: Service[] = [
       "Underhållsavtal för vägsamfälligheter",
     ],
     season: "Barmark",
+    image: "/maskinpark/vaghyvel.jpg",
+    imageAlt:
+      "Gul Caterpillar väghyvel som profilerar en nyanlagd grusyta.",
   },
   {
     slug: "snorojning-och-halkbekampning",
@@ -84,6 +93,9 @@ export const services: Service[] = [
       "Säsongsavtal med jourberedskap",
     ],
     season: "Vinter",
+    image: "/maskinpark/snorojning.jpg",
+    imageAlt:
+      "Volvo hjullastare med vikplog som plogar en snötäckt landsväg i mörker.",
   },
   {
     slug: "sopning-och-renhallning",
@@ -97,6 +109,9 @@ export const services: Service[] = [
       "Bortforsling av sopmassor",
     ],
     season: "Barmark",
+    image: "/maskinpark/sopning.jpg",
+    imageAlt:
+      "Volvo hjullastare med sopaggregat som sopar kanten på en villagata.",
   },
   {
     slug: "skogsarbete",
@@ -110,6 +125,9 @@ export const services: Service[] = [
       "Uttransport av ris och rotvältor",
     ],
     season: "Barmark",
+    image: "/maskinpark/markberedning.jpg",
+    imageAlt:
+      "Orange EPAB-bandgrävare på ett hygge med markberedningsaggregat lyft högt i luften.",
   },
   {
     slug: "bergkross",
@@ -123,6 +141,9 @@ export const services: Service[] = [
       "Krossverket flyttas ut till arbetsplatsen",
     ],
     season: "Barmark",
+    image: "/maskinpark/forkross.jpg",
+    imageAlt:
+      "Orange EPAB-grävmaskin som matar en mobil förkross på arbetsplatsen.",
   },
   {
     slug: "transport-och-massor",
@@ -136,6 +157,9 @@ export const services: Service[] = [
       "Maskinflytt inom regionen",
     ],
     season: "Året runt",
+    image: "/maskinpark/efterkross.jpg",
+    imageAlt:
+      "Mobilt efterkross- och sorteringsverk med en hög färdigsiktad makadam framför sig.",
   },
 ];
 

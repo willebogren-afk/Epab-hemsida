@@ -100,3 +100,22 @@ body {
 .text-balance {
   text-wrap: balance;
 }
+
+/* Scrollmarkören under heron: en kort puls nedåt som antyder att sidan
+   fortsätter. Stängs av av prefers-reduced-motion-regeln ovan. */
+@keyframes scroll-cue {
+  0%,
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scaleY(0.45);
+    opacity: 0.45;
+  }
+}
+
+.scroll-cue {
+  transform-origin: top;
+  animation: scroll-cue 2.2s ease-in-out infinite;
+}

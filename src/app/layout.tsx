@@ -1,19 +1,20 @@
 import type { Metadata } from "next";
-import { Anton, Archivo } from "next/font/google";
+import { Oswald, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { site } from "@/lib/site";
 
-const anton = Anton({
-  variable: "--font-bebas",
-  weight: "400",
+const oswald = Oswald({
+  variable: "--font-oswald",
+  weight: ["500", "600", "700"],
   subsets: ["latin-ext"],
   display: "swap",
 });
 
-const archivo = Archivo({
-  variable: "--font-source-sans",
+const sourceSans = Source_Sans_3({
+  variable: "--font-source",
+  weight: ["400", "600", "700"],
   subsets: ["latin-ext"],
   display: "swap",
 });
@@ -43,12 +44,12 @@ export default function RootLayout({
   return (
     <html
       lang="sv"
-      className={`${anton.variable} ${archivo.variable} h-full antialiased`}
+      className={`${oswald.variable} ${sourceSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[var(--color-paper)]">
         <a
           href="#innehall"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-[var(--color-ink)] focus:px-4 focus:py-3 focus:font-bold focus:text-[var(--color-text-on-ink)] focus:outline-4 focus:outline-[var(--color-accent)]"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-[var(--color-brand)] focus:px-4 focus:py-3 focus:font-bold focus:text-[var(--color-on-brand)] focus:outline-4 focus:outline-[var(--color-accent)]"
         >
           Hoppa till innehåll
         </a>

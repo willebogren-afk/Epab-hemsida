@@ -40,14 +40,20 @@ export const nav = [
 export type Service = {
   slug: string;
   title: string;
+  /* Kort etikett för bildrutorna på startsidan — långa namn radbryts illa
+     ovanpå ett foto. */
+  tileTitle: string;
   summary: string;
   details: string[];
   season: "Året runt" | "Vinter" | "Barmark";
+  image: string;
+  imageAlt: string;
 };
 
 export const services: Service[] = [
   {
     slug: "mark-och-schakt",
+    tileTitle: "Mark & schakt",
     title: "Mark och schakt",
     summary:
       "Grundläggning, VA-schakt, dränering och finplanering med grävmaskiner från 3 till 30 ton.",
@@ -58,9 +64,13 @@ export const services: Service[] = [
       "Massutbyte och terrassering",
     ],
     season: "Året runt",
+    image: "/maskinpark/langgravare.jpg",
+    imageAlt:
+      "Två grävmaskiner som schaktar lermassor på ett industriområde.",
   },
   {
     slug: "vaghallning",
+    tileTitle: "Gator & vägar",
     title: "Väghållning",
     summary:
       "Hyvling, dammbindning och grusning av enskilda vägar, samfälligheter och industriområden.",
@@ -71,9 +81,13 @@ export const services: Service[] = [
       "Underhållsavtal för vägsamfälligheter",
     ],
     season: "Barmark",
+    image: "/maskinpark/vaghyvel.jpg",
+    imageAlt:
+      "Väghyvel som profilerar en nyanlagd grusyta.",
   },
   {
     slug: "snorojning-och-halkbekampning",
+    tileTitle: "Snöröjning",
     title: "Snöröjning och halkbekämpning",
     summary:
       "Jour dygnet runt genom vintersäsongen för fastigheter, industri och vägföreningar.",
@@ -84,9 +98,13 @@ export const services: Service[] = [
       "Säsongsavtal med jourberedskap",
     ],
     season: "Vinter",
+    image: "/maskinpark/snorojning.jpg",
+    imageAlt:
+      "Hjullastare med vikplog som plogar en snötäckt landsväg i mörker.",
   },
   {
     slug: "sopning-och-renhallning",
+    tileTitle: "Sopning",
     title: "Sopning och renhållning",
     summary:
       "Vårsopning av vägar, parkeringar och industriytor med sopvals och vattendimma.",
@@ -97,9 +115,13 @@ export const services: Service[] = [
       "Bortforsling av sopmassor",
     ],
     season: "Barmark",
+    image: "/maskinpark/sopning.jpg",
+    imageAlt:
+      "Hjullastare med sopaggregat som sopar kanten på en villagata.",
   },
   {
     slug: "skogsarbete",
+    tileTitle: "Skog & mark",
     title: "Skogsarbete och markberedning",
     summary:
       "Stubbrytning, markberedning och röjning inför plantering och anläggning.",
@@ -110,9 +132,13 @@ export const services: Service[] = [
       "Uttransport av ris och rotvältor",
     ],
     season: "Barmark",
+    image: "/maskinpark/markberedning.jpg",
+    imageAlt:
+      "Bandgrävare med markberedningsaggregat på ett hygge.",
   },
   {
     slug: "bergkross",
+    tileTitle: "Berg & kross",
     title: "Krossning och sortering",
     summary:
       "Mobil för- och efterkross som gör bärlager, makadam och fyllnadsmassor av sprängsten på plats.",
@@ -123,9 +149,13 @@ export const services: Service[] = [
       "Krossverket flyttas ut till arbetsplatsen",
     ],
     season: "Barmark",
+    image: "/maskinpark/forkross.jpg",
+    imageAlt:
+      "Grävmaskin som matar en mobil förkross på ett upplag.",
   },
   {
     slug: "transport-och-massor",
+    tileTitle: "Transport",
     title: "Transport och massor",
     summary:
       "Leverans av grus, matjord och bergkross samt bortforsling av schaktmassor.",
@@ -136,6 +166,9 @@ export const services: Service[] = [
       "Maskinflytt inom regionen",
     ],
     season: "Året runt",
+    image: "/maskinpark/efterkross.jpg",
+    imageAlt:
+      "Sorteringsverk med en hög färdigsiktad makadam.",
   },
 ];
 

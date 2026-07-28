@@ -1,55 +1,47 @@
 @import "tailwindcss";
 
 :root {
-  /* Ink — near-black with a warm, diesel-soot undertone (matches the cab black on the fleet) */
-  --color-ink: #16130f;
-  --color-ink-2: #221d17;
-  --color-ink-3: #332b21;
-
-  /* Paper — warm concrete/gravel neutrals, never pure white */
-  --color-paper: #f6f2ea;
-  --color-paper-2: #ece5d6;
-  --color-paper-3: #ddd3bd;
-
-  /* Accent — the safety orange off the boom paint */
+  /* Brand — deep burnt orange carries the chrome (header, footer, photo tint).
+     Bright orange is reserved for accents, so it never has to hold white text. */
+  --color-brand: #6b2806;
+  --color-brand-dark: #4a1b04;
+  --color-brand-tint: #8f3405;
   --color-accent: #e85a0c;
   --color-accent-bright: #ff7a24;
-  --color-accent-deep: #a8410a;
 
-  --color-text: #1c1712;
-  --color-text-muted: #5c5245;
-  --color-text-on-ink: #f6f2ea;
-  --color-text-on-ink-muted: #b6a996;
+  --color-paper: #ffffff;
+  --color-paper-2: #efedea;
+  --color-paper-3: #ddd8d2;
 
-  --color-border: #d9cfb9;
-  --color-border-on-ink: #3d352a;
+  --color-text: #1a1a1a;
+  --color-text-muted: #4d4a47;
+  --color-on-brand: #ffffff;
+  --color-on-brand-muted: #e8d5c9;
 
-  --font-display: var(--font-bebas), "Arial Narrow", sans-serif;
-  --font-body: var(--font-source-sans), system-ui, sans-serif;
+  --color-border: #d8d3cd;
+  --color-border-on-brand: #8d4a20;
+
+  --font-display: var(--font-oswald), "Arial Narrow", sans-serif;
+  --font-body: var(--font-source), system-ui, sans-serif;
 }
 
 @theme inline {
-  --color-ink: var(--color-ink);
-  --color-ink-2: var(--color-ink-2);
-  --color-ink-3: var(--color-ink-3);
+  --color-brand: var(--color-brand);
+  --color-brand-dark: var(--color-brand-dark);
+  --color-brand-tint: var(--color-brand-tint);
+  --color-accent: var(--color-accent);
+  --color-accent-bright: var(--color-accent-bright);
   --color-paper: var(--color-paper);
   --color-paper-2: var(--color-paper-2);
   --color-paper-3: var(--color-paper-3);
-  --color-accent: var(--color-accent);
-  --color-accent-bright: var(--color-accent-bright);
-  --color-accent-deep: var(--color-accent-deep);
   --color-text: var(--color-text);
   --color-text-muted: var(--color-text-muted);
-  --color-text-on-ink: var(--color-text-on-ink);
-  --color-text-on-ink-muted: var(--color-text-on-ink-muted);
+  --color-on-brand: var(--color-on-brand);
+  --color-on-brand-muted: var(--color-on-brand-muted);
   --color-border: var(--color-border);
-  --color-border-on-ink: var(--color-border-on-ink);
+  --color-border-on-brand: var(--color-border-on-brand);
   --font-display: var(--font-display);
   --font-body: var(--font-body);
-}
-
-* {
-  scrollbar-color: var(--color-accent) var(--color-paper-2);
 }
 
 html {
@@ -62,41 +54,65 @@ body {
   font-family: var(--font-body);
 }
 
+/* Display type is condensed, heavy and set in caps — the voice of the whole
+   site. Line-height stays at 1.1 rather than the tighter setting the look
+   suggests: Swedish caps carry Å, Ä and Ö, and anything tighter clips the
+   diacritics clean off. */
+.display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.005em;
+  line-height: 1.1;
+}
+
+/* The photo treatment: desaturate first, then wash with the brand colour.
+   Desaturating matters here — the machines are already orange, and tinting
+   them without it turns every photo into the same brown mud. Stripping the
+   colour first keeps the tonal contrast and reads as a deliberate duotone. */
+.photo-tint img {
+  filter: grayscale(0.85) contrast(1.08);
+}
+
+.photo-tint::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--color-brand-tint);
+  opacity: 0.78;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+/* A second, flat pass guarantees the contrast floor for white text even where
+   multiply lands on a near-white sky. */
+.photo-tint::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: var(--color-brand-dark);
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+.photo-tint-soft::before {
+  opacity: 0.18;
+}
+
+.photo-tint-soft::after {
+  opacity: 0.55;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  * {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
-}
-
-/* Hazard stripe — the site's signature motif, lifted straight off warning
-   chevrons on the fleet. Used sparingly as a structural marker, never as
-   decoration. */
-.hazard-stripe {
-  background-image: repeating-linear-gradient(
-    135deg,
-    var(--color-ink) 0px,
-    var(--color-ink) 14px,
-    var(--color-accent) 14px,
-    var(--color-accent) 28px
-  );
-}
-
-.hazard-stripe-thin {
-  background-image: repeating-linear-gradient(
-    135deg,
-    var(--color-ink) 0px,
-    var(--color-ink) 7px,
-    var(--color-accent) 7px,
-    var(--color-accent) 14px
-  );
-}
-
-.text-balance {
-  text-wrap: balance;
 }

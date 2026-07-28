@@ -1,293 +1,154 @@
 import Link from "next/link";
-import { Photo } from "@/components/photo";
+import { TintedPhoto } from "@/components/tinted-photo";
 import { machines, services, site } from "@/lib/site";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <SeasonBand />
-      <ServicesGrid />
-      <FleetTeaser />
-      <ContactCta />
+      <ServiceTiles />
+      <FleetBand />
+      <ContactBand />
     </>
   );
 }
 
 function Hero() {
   return (
-    <section className="border-b-2 border-[var(--color-ink)] bg-[var(--color-ink)] text-[var(--color-text-on-ink)]">
-      <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 sm:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-14">
-        <div>
-          <p className="flex items-center gap-3 font-display text-sm tracking-[0.22em] text-[var(--color-accent-bright)] uppercase">
-            <span className="h-4 w-1.5 bg-[var(--color-accent)]" aria-hidden="true" />
-            Fliseryd · Oskarshamn · Mönsterås
-          </p>
-          <h1 className="mt-5 font-display text-[clamp(3rem,9vw,6.5rem)] leading-[0.88] tracking-[-0.015em] uppercase text-balance">
-            Vi flyttar
-            <br />
-            massor.
-            <br />
-            <span className="text-[var(--color-accent-bright)]">Och snö.</span>
-          </h1>
-          <p className="mt-7 max-w-xl text-lg leading-relaxed text-[var(--color-text-on-ink-muted)]">
-            EPAB Maskintjänst är entreprenören som kör hela året: schakt och
-            väghållning under barmark, plog och sand när vintern slår till. Egna
-            maskiner, egna förare, samma telefonnummer dygnet runt.
-          </p>
+    <section className="relative isolate flex min-h-[calc(100svh-84px)] flex-col justify-center overflow-hidden">
+      <TintedPhoto
+        src={machines[5].image!}
+        alt={machines[5].imageAlt}
+        priority
+        sizes="100vw"
+      />
 
-          <div className="mt-9 flex flex-wrap gap-3">
-            <Link
-              href="/kontakt"
-              className="flex min-h-[52px] cursor-pointer items-center bg-[var(--color-accent)] px-7 font-display text-xl tracking-[0.06em] text-[var(--color-ink)] uppercase transition-colors duration-200 hover:bg-[var(--color-accent-bright)] focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[var(--color-accent-bright)]"
-            >
-              Begär offert
-            </Link>
-            <a
-              href={site.phoneHref}
-              className="flex min-h-[52px] cursor-pointer items-center border-2 border-[var(--color-text-on-ink-muted)] px-7 font-display text-xl tracking-[0.06em] uppercase transition-colors duration-200 hover:border-[var(--color-accent-bright)] hover:text-[var(--color-accent-bright)] focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[var(--color-accent-bright)]"
-            >
-              Ring {site.phone}
-            </a>
-          </div>
-        </div>
+      <div className="relative mx-auto w-full max-w-4xl px-6 py-24 text-center text-[var(--color-on-brand)]">
+        <h1 className="display text-[clamp(2.4rem,7.5vw,4.75rem)]">
+          Vi flyttar massor.
+          <br />
+          Och snö.
+        </h1>
+        <p className="mx-auto mt-7 max-w-2xl text-lg leading-relaxed font-semibold sm:text-xl">
+          Med egna maskiner, egna förare och jour dygnet runt utför vi mark och
+          schakt, väghållning, krossning och snöröjning. EPAB Maskintjänst AB
+          utgår från Fliseryd och arbetar i Oskarshamn, Mönsterås och övriga
+          Kalmar län.
+        </p>
 
-        <div className="grid grid-cols-2 gap-3">
-          {/* Wide slot takes a landscape frame; the two squares take the
-              portrait shots, which crop to square without losing the machine. */}
-          <Photo
-            src={machines[5].image}
-            alt={machines[5].imageAlt}
-            ratio="aspect-[16/10]"
-            priority
-            className="col-span-2 border-2 border-[var(--color-border-on-ink)]"
-            sizes="(min-width: 1024px) 45vw, 100vw"
-          />
-          <Photo
-            src={machines[0].image}
-            alt={machines[0].imageAlt}
-            ratio="aspect-square"
-            className="border-2 border-[var(--color-border-on-ink)]"
-            sizes="(min-width: 1024px) 22vw, 50vw"
-          />
-          <Photo
-            src={machines[1].image}
-            alt={machines[1].imageAlt}
-            ratio="aspect-square"
-            className="border-2 border-[var(--color-border-on-ink)]"
-            sizes="(min-width: 1024px) 22vw, 50vw"
-          />
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* The season band is the site's structural thesis: this company's year is split
-   by what the ground is doing, not by service category. */
-function SeasonBand() {
-  const bands = [
-    {
-      season: "Barmark",
-      months: "April – november",
-      work: "Schakt, hyvling, sopning, markberedning",
-    },
-    {
-      season: "Vinter",
-      months: "November – april",
-      work: "Plogning, sandning, snöbortforsling, jour",
-    },
-    {
-      season: "Året runt",
-      months: "Januari – december",
-      work: "Grundläggning, VA, transport av massor",
-    },
-  ];
-
-  return (
-    <section className="border-b-2 border-[var(--color-ink)] bg-[var(--color-paper-2)]">
-      <div className="mx-auto max-w-7xl px-6 py-12">
-        <h2 className="sr-only">Arbetet över året</h2>
-        <dl className="grid gap-8 sm:grid-cols-3 sm:gap-10">
-          {bands.map((b) => (
-            <div
-              key={b.season}
-              className="border-l-4 border-[var(--color-accent)] pl-5"
-            >
-              <dt className="font-display text-2xl tracking-[0.04em] uppercase">
-                {b.season}
-              </dt>
-              <dd className="mt-1 font-semibold text-[var(--color-text-muted)] tabular-nums">
-                {b.months}
-              </dd>
-              <dd className="mt-2 leading-snug text-[var(--color-text-muted)]">
-                {b.work}
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </div>
-    </section>
-  );
-}
-
-function ServicesGrid() {
-  return (
-    <section className="border-b-2 border-[var(--color-ink)]">
-      <div className="mx-auto max-w-7xl px-6 py-16 sm:py-20">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <div>
-            <p className="flex items-center gap-3 font-display text-sm tracking-[0.22em] text-[var(--color-accent-deep)] uppercase">
-              <span
-                className="h-4 w-1.5 bg-[var(--color-accent)]"
-                aria-hidden="true"
-              />
-              Vad vi gör
-            </p>
-            <h2 className="mt-4 max-w-2xl font-display text-4xl leading-[0.95] uppercase sm:text-5xl">
-              Uppdragen vi tar oss an
-            </h2>
-          </div>
+        <div className="mt-10 flex flex-wrap justify-center gap-4">
           <Link
-            href="/tjanster"
-            className="cursor-pointer border-b-2 border-[var(--color-accent)] pb-1 font-display text-lg tracking-[0.06em] uppercase transition-colors duration-200 hover:text-[var(--color-accent-deep)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
+            href="/kontakt"
+            className="display flex min-h-[54px] cursor-pointer items-center rounded-full bg-[var(--color-accent)] px-9 text-xl tracking-[0.04em] text-[var(--color-text)] transition-colors duration-200 hover:bg-[var(--color-accent-bright)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-on-brand)]"
           >
-            Alla tjänster i detalj
+            Begär offert
           </Link>
+          <a
+            href={site.phoneHref}
+            className="display flex min-h-[54px] cursor-pointer items-center rounded-full border-2 border-[var(--color-on-brand)] px-9 text-xl tracking-[0.04em] transition-colors duration-200 hover:bg-[var(--color-on-brand)] hover:text-[var(--color-brand)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent-bright)]"
+          >
+            {site.phone}
+          </a>
         </div>
+      </div>
 
-        <ul className="mt-12 grid gap-px bg-[var(--color-border)] sm:grid-cols-2 lg:grid-cols-3">
+      <a
+        href="#tjanster"
+        className="relative mx-auto mb-10 flex cursor-pointer flex-col items-center gap-2 text-[var(--color-on-brand)] transition-opacity duration-200 hover:opacity-70 focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent-bright)]"
+      >
+        <span className="font-semibold">Läs mer</span>
+        <span aria-hidden="true" className="h-10 w-px bg-current" />
+      </a>
+    </section>
+  );
+}
+
+function ServiceTiles() {
+  return (
+    <section id="tjanster" className="scroll-mt-24 bg-[var(--color-paper-2)]">
+      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">
+        <ul className="grid gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
           {services.map((s) => (
-            <li key={s.slug} className="bg-[var(--color-paper)]">
+            <li key={s.slug}>
               <Link
                 href={`/tjanster#${s.slug}`}
-                className="group flex h-full cursor-pointer flex-col p-7 transition-colors duration-200 hover:bg-[var(--color-paper-2)] focus-visible:outline-3 focus-visible:outline-offset-[-3px] focus-visible:outline-[var(--color-accent)]"
+                className="group block cursor-pointer focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
               >
-                <span className="font-display text-xs tracking-[0.2em] text-[var(--color-text-muted)] uppercase">
-                  {s.season}
-                </span>
-                <h3 className="mt-3 font-display text-2xl leading-tight uppercase">
-                  {s.title}
-                </h3>
-                <p className="mt-3 flex-1 leading-relaxed text-[var(--color-text-muted)]">
-                  {s.summary}
-                </p>
-                <span
-                  aria-hidden="true"
-                  className="mt-6 h-1 w-10 bg-[var(--color-accent)] transition-all duration-200 group-hover:w-20"
-                />
+                <div className="relative aspect-[4/5] overflow-hidden md:aspect-[4/3]">
+                  <TintedPhoto
+                    src={s.image}
+                    alt={s.imageAlt}
+                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                  />
+                  <span className="absolute inset-0 z-10 flex items-center justify-center p-6">
+                    <span className="display rounded-full border-2 border-[var(--color-on-brand)] px-8 py-3 text-center text-xl tracking-[0.04em] text-[var(--color-on-brand)] transition-colors duration-200 group-hover:bg-[var(--color-on-brand)] group-hover:text-[var(--color-brand)] sm:text-2xl">
+                      {s.tileTitle}
+                    </span>
+                  </span>
+                </div>
               </Link>
+              <p className="mt-4 text-lg leading-relaxed text-[var(--color-text)]">
+                {s.summary}
+              </p>
             </li>
           ))}
-          <ServicesFiller />
         </ul>
       </div>
     </section>
   );
 }
 
-/* An odd service count leaves dead cells in the last grid row. Fill them with
-   the call to action instead of leaving a hole. */
-function ServicesFiller() {
-  const spanAtLg = ["lg:col-span-3", "lg:col-span-2", "lg:col-span-1"][
-    services.length % 3
-  ];
-  const spanAtSm = ["sm:col-span-2", "sm:col-span-1"][services.length % 2];
-
+function FleetBand() {
   return (
-    <li className={`bg-[var(--color-paper-2)] ${spanAtSm} ${spanAtLg}`}>
-      <div className="flex h-full flex-col justify-center p-7">
-        <p className="font-display text-2xl leading-tight uppercase">
-          Passar inget av det här?
-        </p>
-        <p className="mt-3 leading-relaxed text-[var(--color-text-muted)]">
-          Beskriv jobbet så säger vi vad som krävs — och om vi är rätt
-          entreprenör för det.
+    <section className="relative isolate overflow-hidden">
+      <TintedPhoto
+        src={machines[4].image!}
+        alt={machines[4].imageAlt}
+        soft
+        sizes="100vw"
+      />
+      <div className="relative mx-auto max-w-7xl px-5 py-20 text-[var(--color-on-brand)] sm:px-8 sm:py-28">
+        <h2 className="display max-w-2xl text-[clamp(1.9rem,4.5vw,3rem)]">
+          Rätt maskin till rätt jobb
+        </h2>
+        <p className="mt-5 max-w-xl text-lg leading-relaxed font-semibold">
+          Från väghyvel och markberedare till 30-tons långgrävare och mobila
+          krossverk. Hjullastarna byter aggregat efter säsong: sopvals på våren,
+          vikplog och sandspridare på vintern.
         </p>
         <Link
-          href="/kontakt"
-          className="mt-5 cursor-pointer self-start border-b-2 border-[var(--color-accent)] pb-1 font-display text-lg tracking-[0.06em] uppercase transition-colors duration-200 hover:text-[var(--color-accent-deep)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
+          href="/maskinpark"
+          className="display mt-9 inline-flex min-h-[54px] cursor-pointer items-center rounded-full border-2 border-[var(--color-on-brand)] px-9 text-xl tracking-[0.04em] transition-colors duration-200 hover:bg-[var(--color-on-brand)] hover:text-[var(--color-brand)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent-bright)]"
         >
-          Hör av dig
+          Se maskinparken
         </Link>
-      </div>
-    </li>
-  );
-}
-
-function FleetTeaser() {
-  return (
-    <section className="border-b-2 border-[var(--color-ink)] bg-[var(--color-paper-2)]">
-      <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 sm:py-20 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-        <div>
-          <p className="flex items-center gap-3 font-display text-sm tracking-[0.22em] text-[var(--color-accent-deep)] uppercase">
-            <span
-              className="h-4 w-1.5 bg-[var(--color-accent)]"
-              aria-hidden="true"
-            />
-            Maskinparken
-          </p>
-          <h2 className="mt-4 font-display text-4xl leading-[0.95] uppercase sm:text-5xl">
-            Rätt maskin till rätt jobb
-          </h2>
-          <p className="mt-6 leading-relaxed text-[var(--color-text-muted)]">
-            Från väghyvel och markberedare till 30-tons långgrävare och mobila
-            krossverk. Hjullastarna byter aggregat efter säsong: sopvals på
-            våren, vikplog och sandspridare på vintern.
-          </p>
-          <Link
-            href="/maskinpark"
-            className="mt-8 inline-flex min-h-[52px] cursor-pointer items-center bg-[var(--color-ink)] px-7 font-display text-xl tracking-[0.06em] text-[var(--color-text-on-ink)] uppercase transition-colors duration-200 hover:bg-[var(--color-accent)] hover:text-[var(--color-ink)] focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[var(--color-accent)]"
-          >
-            Se hela maskinparken
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-2 gap-3">
-          {machines.slice(2, 6).map((m) => (
-            /* vaghyvel, markberedning, langgravare, forkross */
-            <Photo
-              key={m.name}
-              src={m.image}
-              alt={m.imageAlt}
-              ratio="aspect-[4/3]"
-              className="border-2 border-[var(--color-border)]"
-              sizes="(min-width: 1024px) 28vw, 50vw"
-            />
-          ))}
-        </div>
       </div>
     </section>
   );
 }
 
-function ContactCta() {
+function ContactBand() {
   return (
-    <section className="bg-[var(--color-ink)] text-[var(--color-text-on-ink)]">
-      <div className="mx-auto grid max-w-7xl gap-8 px-6 py-16 sm:py-20 lg:grid-cols-[1fr_auto] lg:items-center">
-        <div>
-          <h2 className="font-display text-4xl leading-[0.95] uppercase sm:text-5xl">
-            Har du ett jobb åt oss?
-          </h2>
-          <p className="mt-5 max-w-xl leading-relaxed text-[var(--color-text-on-ink-muted)]">
-            Ring Erik eller Per direkt, eller skicka en förfrågan via
-            formuläret. Vi återkommer med svar snarast.
-          </p>
-        </div>
-        <div className="flex flex-wrap gap-3">
-          <Link
-            href="/kontakt"
-            className="flex min-h-[52px] cursor-pointer items-center bg-[var(--color-accent)] px-7 font-display text-xl tracking-[0.06em] text-[var(--color-ink)] uppercase transition-colors duration-200 hover:bg-[var(--color-accent-bright)] focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[var(--color-accent-bright)]"
-          >
-            Kontakta oss
-          </Link>
-          <a
-            href={site.phoneHref}
-            className="flex min-h-[52px] cursor-pointer items-center border-2 border-[var(--color-text-on-ink-muted)] px-7 font-display text-xl tracking-[0.06em] uppercase transition-colors duration-200 hover:border-[var(--color-accent-bright)] hover:text-[var(--color-accent-bright)] focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[var(--color-accent-bright)]"
-          >
-            {site.phone}
-          </a>
-        </div>
+    <section className="relative isolate overflow-hidden">
+      <TintedPhoto
+        src={machines[3].image!}
+        alt={machines[3].imageAlt}
+        sizes="100vw"
+      />
+      <div className="relative mx-auto max-w-7xl px-5 py-20 text-[var(--color-on-brand)] sm:px-8 sm:py-28">
+        <h2 className="display max-w-2xl text-[clamp(1.9rem,4.5vw,3rem)]">
+          Engagemang i alla uppdrag
+        </h2>
+        <p className="mt-5 max-w-xl text-lg leading-relaxed font-semibold">
+          Ring Erik eller Per direkt, eller skicka en förfrågan via formuläret.
+          Vi återkommer med svar snarast.
+        </p>
+        <Link
+          href="/kontakt"
+          className="display mt-9 inline-flex min-h-[54px] cursor-pointer items-center rounded-full border-2 border-[var(--color-on-brand)] px-9 text-xl tracking-[0.04em] transition-colors duration-200 hover:bg-[var(--color-on-brand)] hover:text-[var(--color-brand)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent-bright)]"
+        >
+          Kontakta oss
+        </Link>
       </div>
     </section>
   );

@@ -48,16 +48,14 @@ export function Photo({
 
   return (
     <div
-      className={`relative flex ${ratio} flex-col justify-between overflow-hidden border-2 border-dashed border-[var(--color-border)] bg-[var(--color-paper-2)] p-5 ${className}`}
+      className={`relative flex ${ratio} flex-col justify-between overflow-hidden border-2 border-dashed border-[var(--color-border)] bg-[var(--color-paper)] p-5 ${className}`}
     >
-      <span className="font-display text-sm tracking-[0.18em] text-[var(--color-text-muted)] uppercase">
+      <span className="display text-sm tracking-[0.16em] text-[var(--color-text-muted)]">
         Bild saknas
       </span>
       <span className="flex flex-col gap-1 text-sm leading-snug text-[var(--color-text-muted)]">
         <span>{alt}</span>
-        {src && (
-          <code className="text-xs opacity-70">public{src}</code>
-        )}
+        {src && <code className="text-xs opacity-70">public{src}</code>}
       </span>
     </div>
   );

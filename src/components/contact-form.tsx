@@ -95,9 +95,9 @@ export function ContactForm() {
       ref={formRef}
       onSubmit={submit}
       noValidate
-      className="border-2 border-[var(--color-ink)] bg-[var(--color-paper-2)] p-7 sm:p-9"
+      className="border border-[var(--color-border)] bg-[var(--color-paper-2)] p-7 sm:p-9"
     >
-      <h2 className="font-display text-3xl leading-tight uppercase sm:text-4xl">
+      <h2 className="display text-[clamp(1.7rem,4vw,2.4rem)]">
         Skicka en förfrågan
       </h2>
       <p className="mt-3 leading-relaxed text-[var(--color-text-muted)]">
@@ -144,7 +144,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="tjanst"
-            className="font-display text-sm tracking-[0.14em] uppercase"
+            className="display text-sm tracking-[0.14em]"
           >
             Tjänst
           </label>
@@ -153,7 +153,7 @@ export function ContactForm() {
             name="tjanst"
             value={values.tjanst}
             onChange={(e) => update("tjanst", e.target.value)}
-            className="mt-2 min-h-[52px] w-full cursor-pointer border-2 border-[var(--color-ink)] bg-[var(--color-paper)] px-4 text-base focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)]"
+            className="mt-2 min-h-[52px] w-full cursor-pointer border-2 border-[var(--color-border)] bg-[var(--color-paper)] px-4 text-base focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)]"
           >
             <option value="">Vet inte / annat</option>
             {services.map((s) => (
@@ -167,7 +167,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="meddelande"
-            className="font-display text-sm tracking-[0.14em] uppercase"
+            className="display text-sm tracking-[0.14em]"
           >
             Meddelande <Req />
           </label>
@@ -194,7 +194,7 @@ export function ContactForm() {
             className={`mt-2 w-full resize-y border-2 bg-[var(--color-paper)] p-4 text-base focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)] ${
               touched.meddelande && errors.meddelande
                 ? "border-[#b3261e]"
-                : "border-[var(--color-ink)]"
+                : "border-[var(--color-border)]"
             }`}
           />
           {touched.meddelande && errors.meddelande && (
@@ -205,7 +205,7 @@ export function ContactForm() {
 
       <button
         type="submit"
-        className="mt-8 flex min-h-[52px] w-full cursor-pointer items-center justify-center bg-[var(--color-accent)] px-7 font-display text-xl tracking-[0.06em] text-[var(--color-ink)] uppercase transition-colors duration-200 hover:bg-[var(--color-accent-deep)] focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[var(--color-ink)] sm:w-auto"
+        className="display mt-8 flex min-h-[54px] w-full cursor-pointer items-center justify-center rounded-full bg-[var(--color-accent)] px-9 text-xl tracking-[0.04em] text-[var(--color-text)] transition-colors duration-200 hover:bg-[var(--color-accent-bright)] focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[var(--color-brand)] sm:w-auto"
       >
         Skicka förfrågan
       </button>
@@ -223,7 +223,7 @@ export function ContactForm() {
 
 function Req() {
   return (
-    <span className="text-[var(--color-accent-deep)]" aria-hidden="true">
+    <span className="text-[var(--color-accent)]" aria-hidden="true">
       *
     </span>
   );
@@ -283,7 +283,7 @@ function TextField({
     <div>
       <label
         htmlFor={name}
-        className="font-display text-sm tracking-[0.14em] uppercase"
+        className="display text-sm tracking-[0.14em]"
       >
         {label} {required && <Req />}
       </label>
@@ -299,7 +299,7 @@ function TextField({
         aria-errormessage={errorId}
         aria-describedby={hintId}
         className={`mt-2 min-h-[52px] w-full border-2 bg-[var(--color-paper)] px-4 text-base focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)] ${
-          error ? "border-[#b3261e]" : "border-[var(--color-ink)]"
+          error ? "border-[#b3261e]" : "border-[var(--color-border)]"
         }`}
       />
       {hint && (

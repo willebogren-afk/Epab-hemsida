@@ -1,16 +1,21 @@
-Lägg maskinbilderna i den här mappen. Sajten känner av vilka filer som finns och
-visar bilden så fort den är på plats — ingen kodändring behövs.
+Maskinbilder. Sajten känner av vilka filer som finns och visar bilden så fort
+den är på plats — ingen kodändring behövs för att byta ut ett foto mot ett nytt
+med samma namn.
 
-## Förväntade filnamn
+## Filer
 
 | Filnamn | Bild |
 | --- | --- |
-| `sopning-hjullastare.jpg` | Volvo hjullastare med Holms sopaggregat |
-| `plogning-hjullastare.jpg` | Volvo hjullastare med vikplog, vinternatt |
+| `sopning.jpg` | Volvo hjullastare med Holms sopaggregat |
+| `snorojning.jpg` | Volvo hjullastare med vikplog, vinternatt |
 | `vaghyvel.jpg` | Caterpillar väghyvel |
-| `stubbgrip-bandgravare.jpg` | Orange EPAB-bandgrävare med stubbgrip |
-| `langgravare-schakt.jpg` | Två orange EPAB-grävmaskiner på schakt |
-| `kompaktgravare.jpg` | Kompaktgrävare (foto saknas ännu) |
+| `markberedning.jpg` | Bandgrävare med markberedningsaggregat på hygge |
+| `langgravare.jpg` | Två grävmaskiner på industrischakt |
+| `forkross.jpg` | Grävmaskin som matar mobil förkross |
+| `efterkross.jpg` | Efterkross och sorteringsverk |
 
-Bilder bör vara minst 1600 px breda. Vill du använda `.webp` eller ett annat
-filnamn behöver `image`-fältet i `src/lib/site.ts` uppdateras.
+Använd ASCII i filnamnen (inte å, ä, ö) — det undviker teckenproblem i
+webbadresser. Bilder bör vara minst 1600 px breda.
+
+Vill du lägga till en maskin: lägg bilden här och lägg till en post i
+`machines` i `src/lib/site.ts`.

@@ -53,9 +53,11 @@ function Hero() {
         </div>
 
         <div className="grid grid-cols-2 gap-3">
+          {/* Wide slot takes a landscape frame; the two squares take the
+              portrait shots, which crop to square without losing the machine. */}
           <Photo
-            src={machines[1].image}
-            alt={machines[1].imageAlt}
+            src={machines[5].image}
+            alt={machines[5].imageAlt}
             ratio="aspect-[16/10]"
             priority
             className="col-span-2 border-2 border-[var(--color-border-on-ink)]"
@@ -69,8 +71,8 @@ function Hero() {
             sizes="(min-width: 1024px) 22vw, 50vw"
           />
           <Photo
-            src={machines[4].image}
-            alt={machines[4].imageAlt}
+            src={machines[1].image}
+            alt={machines[1].imageAlt}
             ratio="aspect-square"
             className="border-2 border-[var(--color-border-on-ink)]"
             sizes="(min-width: 1024px) 22vw, 50vw"
@@ -143,7 +145,7 @@ function ServicesGrid() {
               Vad vi gör
             </p>
             <h2 className="mt-4 max-w-2xl font-display text-4xl leading-[0.95] uppercase sm:text-5xl">
-              Sex uppdrag vi tar oss an
+              Uppdragen vi tar oss an
             </h2>
           </div>
           <Link
@@ -177,9 +179,39 @@ function ServicesGrid() {
               </Link>
             </li>
           ))}
+          <ServicesFiller />
         </ul>
       </div>
     </section>
+  );
+}
+
+/* An odd service count leaves dead cells in the last grid row. Fill them with
+   the call to action instead of leaving a hole. */
+function ServicesFiller() {
+  const spanAtLg = ["lg:col-span-3", "lg:col-span-2", "lg:col-span-1"][
+    services.length % 3
+  ];
+  const spanAtSm = ["sm:col-span-2", "sm:col-span-1"][services.length % 2];
+
+  return (
+    <li className={`bg-[var(--color-paper-2)] ${spanAtSm} ${spanAtLg}`}>
+      <div className="flex h-full flex-col justify-center p-7">
+        <p className="font-display text-2xl leading-tight uppercase">
+          Passar inget av det här?
+        </p>
+        <p className="mt-3 leading-relaxed text-[var(--color-text-muted)]">
+          Beskriv jobbet så säger vi vad som krävs — och om vi är rätt
+          entreprenör för det.
+        </p>
+        <Link
+          href="/kontakt"
+          className="mt-5 cursor-pointer self-start border-b-2 border-[var(--color-accent)] pb-1 font-display text-lg tracking-[0.06em] uppercase transition-colors duration-200 hover:text-[var(--color-accent-deep)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
+        >
+          Hör av dig
+        </Link>
+      </div>
+    </li>
   );
 }
 
@@ -199,9 +231,9 @@ function FleetTeaser() {
             Rätt maskin till rätt jobb
           </h2>
           <p className="mt-6 leading-relaxed text-[var(--color-text-muted)]">
-            Från kompaktgrävare på trånga villatomter till 30-tons långgrävare
-            på industrischakt. Hjullastarna byter aggregat efter säsong: sopvals
-            på våren, vikplog och sandspridare på vintern.
+            Från väghyvel och markberedare till 30-tons långgrävare och mobila
+            krossverk. Hjullastarna byter aggregat efter säsong: sopvals på
+            våren, vikplog och sandspridare på vintern.
           </p>
           <Link
             href="/maskinpark"
@@ -213,6 +245,7 @@ function FleetTeaser() {
 
         <div className="grid grid-cols-2 gap-3">
           {machines.slice(2, 6).map((m) => (
+            /* vaghyvel, markberedning, langgravare, forkross */
             <Photo
               key={m.name}
               src={m.image}

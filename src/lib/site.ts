@@ -112,6 +112,19 @@ export const services: Service[] = [
     season: "Barmark",
   },
   {
+    slug: "bergkross",
+    title: "Krossning och sortering",
+    summary:
+      "Mobil för- och efterkross som gör bärlager, makadam och fyllnadsmassor av sprängsten på plats.",
+    details: [
+      "Krossning av sprängsten och berg",
+      "Återvinning av rivnings- och betongmassor",
+      "Siktning till bärlager och makadam",
+      "Krossverket flyttas ut till arbetsplatsen",
+    ],
+    season: "Barmark",
+  },
+  {
     slug: "transport-och-massor",
     title: "Transport och massor",
     summary:
@@ -144,9 +157,9 @@ export const machines: Machine[] = [
     weight: "ca 14 ton",
     attachments: ["Holms sopvals", "Vattentank", "Sidoborste"],
     note: "Vårsopning av vägar och parkeringar med dammbindning.",
-    image: "/maskinpark/sopning-hjullastare.jpg",
+    image: "/maskinpark/sopning.jpg",
     imageAlt:
-      "Volvo hjullastare med Holms sopaggregat som sopar en villagata en solig vårdag.",
+      "Volvo hjullastare med Holms sopaggregat som sopar kanten på en villagata en solig vårdag.",
   },
   {
     name: "Volvo hjullastare med vikplog",
@@ -154,9 +167,9 @@ export const machines: Machine[] = [
     weight: "ca 14 ton",
     attachments: ["Vikplog", "Sandspridare", "Extraljusramp"],
     note: "Vinterjour, plogning och halkbekämpning dygnet runt.",
-    image: "/maskinpark/plogning-hjullastare.jpg",
+    image: "/maskinpark/snorojning.jpg",
     imageAlt:
-      "Volvo hjullastare med vikplog som plogar en landsväg i mörker under vintern.",
+      "Volvo hjullastare med vikplog som plogar en snötäckt landsväg i mörker, med arbetsbelysningen tänd.",
   },
   {
     name: "Caterpillar väghyvel",
@@ -166,17 +179,17 @@ export const machines: Machine[] = [
     note: "Hyvling och profilering av grusvägar och planer.",
     image: "/maskinpark/vaghyvel.jpg",
     imageAlt:
-      "Caterpillar väghyvel som profilerar en nyanlagd grusväg.",
+      "Gul Caterpillar väghyvel som profilerar en nyanlagd grusyta.",
   },
   {
-    name: "Bandgrävare med stubbgrip",
+    name: "Bandgrävare med markberedningsaggregat",
     category: "Grävmaskin",
     weight: "ca 25 ton",
-    attachments: ["Stubbgrip", "Rototilt", "Skopor"],
-    note: "Markberedning, stubbrytning och röjning i skogsmark.",
-    image: "/maskinpark/stubbgrip-bandgravare.jpg",
+    attachments: ["Markberedningsaggregat", "Rototilt", "Skopor"],
+    note: "Markberedning och högläggning inför plantering på hygge.",
+    image: "/maskinpark/markberedning.jpg",
     imageAlt:
-      "Orange EPAB-bandgrävare med stubbgrip lyft högt över ett hygge.",
+      "Orange EPAB-bandgrävare på ett hygge med markberedningsaggregat lyft högt i luften.",
   },
   {
     name: "Långgrävare för schakt",
@@ -184,17 +197,28 @@ export const machines: Machine[] = [
     weight: "ca 30 ton",
     attachments: ["Långbom", "Planeringsskopa", "Rototilt"],
     note: "Djupschakt, dammarbeten och massförflyttning.",
-    image: "/maskinpark/langgravare-schakt.jpg",
+    image: "/maskinpark/langgravare.jpg",
     imageAlt:
-      "Två orange EPAB-grävmaskiner som schaktar lermassor på ett industriområde.",
+      "Två orange EPAB-grävmaskiner, varav en långgrävare, som schaktar lermassor på ett industriområde.",
   },
   {
-    name: "Kompaktgrävare",
-    category: "Grävmaskin",
-    weight: "3–8 ton",
-    attachments: ["Rototilt", "Kabelskopa", "Plattvibrator"],
-    note: "Trånga tomter, dränering och finplanering.",
-    image: "/maskinpark/kompaktgravare.jpg",
-    imageAlt: "Kompaktgrävare i arbete på en villatomt.",
+    name: "Mobil förkross med matargrävare",
+    category: "Krossverk",
+    weight: "ca 30 ton kross",
+    attachments: ["Käftkross", "Matargrävare", "Transportband"],
+    note: "Krossning av sprängsten och rivningsmassor direkt på plats.",
+    image: "/maskinpark/forkross.jpg",
+    imageAlt:
+      "Orange EPAB-grävmaskin som matar en mobil förkross, med en hög färdigkrossat material framför transportbandet.",
+  },
+  {
+    name: "Mobil efterkross och sorteringsverk",
+    category: "Krossverk",
+    weight: "ca 25 ton",
+    attachments: ["Konkross", "Sorteringsverk", "Tre utlastningsband"],
+    note: "Siktning och färdigställning av bärlager och makadam.",
+    image: "/maskinpark/efterkross.jpg",
+    imageAlt:
+      "Mobilt efterkross- och sorteringsverk med en hög färdigsiktad makadam framför sig.",
   },
 ];

@@ -58,7 +58,7 @@ export function SiteHeader() {
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="huvudmeny-overlay"
-            className="flex min-h-[48px] min-w-[48px] cursor-pointer items-center justify-center text-[var(--color-on-brand)] transition-colors duration-200 hover:text-[var(--color-accent-bright)] focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent-bright)] lg:hidden"
+            className="flex min-h-[48px] min-w-[48px] cursor-pointer items-center justify-center text-[var(--color-on-brand)] transition-colors duration-200 hover:opacity-75 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent-bright)] lg:hidden"
           >
             <span className="sr-only">{open ? "Stäng meny" : "Öppna meny"}</span>
             {open ? (

@@ -31,6 +31,9 @@ export function TintedPhoto({
         priority={priority}
         className="object-cover"
       />
+      {/* Riktad mörkning bakom textytan. Den håller vit text över 4,5:1 utan
+          att hela fotot behöver dras ned — himlen får förbli ljus och varm. */}
+      <span aria-hidden="true" className="photo-scrim" />
     </div>
   );
 }

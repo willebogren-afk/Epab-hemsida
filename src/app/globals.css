@@ -1,29 +1,33 @@
 @import "tailwindcss";
 
 :root {
-  /* Brand — deep burnt orange carries the chrome (header, footer, photo tint).
-     Bright orange is reserved for accents, so it never has to hold white text. */
-  --color-brand: #6b2806;
-  --color-brand-dark: #4a1b04;
-  --color-brand-tint: #8f3405;
-  --color-accent: #e85a0c;
+  /* Brand — varm, ljus bränd orange bär chrome (topplist, sidfot, fototoning).
+     Ljusare än en marinblå förlaga tål: vit text mot brandfärgen ligger på
+     6,2:1, vilket sätter golvet för hur ljus den kan bli. */
+  --color-brand: #a0470e;
+  --color-brand-dark: #7a3308;
+  --color-brand-tint: #b0560f;
+  --color-accent: #f4761c;
 
   /* Logotypens egna färger — hör till märket, inte till sajtens tema. */
   --color-logo-red: #7d2135;
   --color-logo-ink: #1c1a1a;
-  --color-accent-bright: #ff7a24;
+
+  /* Ljus accent: bakgrund vid hover på knappar. Den är för ljus för att
+     bära som text mot brandfärgen — där används vit i stället. */
+  --color-accent-bright: #ffab5c;
 
   --color-paper: #ffffff;
-  --color-paper-2: #efedea;
-  --color-paper-3: #ddd8d2;
+  --color-paper-2: #f5f0ea;
+  --color-paper-3: #e8ded2;
 
   --color-text: #1a1a1a;
-  --color-text-muted: #4d4a47;
+  --color-text-muted: #514842;
   --color-on-brand: #ffffff;
-  --color-on-brand-muted: #e8d5c9;
+  --color-on-brand-muted: #f7e2d2;
 
-  --color-border: #d8d3cd;
-  --color-border-on-brand: #8d4a20;
+  --color-border: #ddd3c7;
+  --color-border-on-brand: #d4884d;
 
   --font-display: var(--font-oswald), "Arial Narrow", sans-serif;
   --font-body: var(--font-source), system-ui, sans-serif;
@@ -75,7 +79,7 @@ body {
    them without it turns every photo into the same brown mud. Stripping the
    colour first keeps the tonal contrast and reads as a deliberate duotone. */
 .photo-tint img {
-  filter: grayscale(0.85) contrast(1.08);
+  filter: grayscale(0.7) contrast(1.05);
 }
 
 .photo-tint::after {
@@ -83,7 +87,7 @@ body {
   position: absolute;
   inset: 0;
   background: var(--color-brand-tint);
-  opacity: 0.78;
+  opacity: 0.72;
   mix-blend-mode: multiply;
   pointer-events: none;
 }
@@ -96,16 +100,31 @@ body {
   inset: 0;
   z-index: 1;
   background: var(--color-brand-dark);
-  opacity: 0.22;
+  opacity: 0.16;
   pointer-events: none;
 }
 
+.photo-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(58, 24, 4, 0) 0%,
+    rgba(58, 24, 4, 0.34) 26%,
+    rgba(58, 24, 4, 0.46) 55%,
+    rgba(58, 24, 4, 0.34) 82%,
+    rgba(58, 24, 4, 0.1) 100%
+  );
+}
+
 .photo-tint-soft::before {
-  opacity: 0.18;
+  opacity: 0.10;
 }
 
 .photo-tint-soft::after {
-  opacity: 0.55;
+  opacity: 0.5;
 }
 
 @media (prefers-reduced-motion: reduce) {

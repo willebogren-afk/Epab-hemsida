@@ -87,7 +87,7 @@ export default function KontaktPage() {
               Under vintersäsongen når du oss dygnet runt på{" "}
               <a
                 href={site.phoneHref}
-                className="cursor-pointer font-semibold text-[var(--color-on-brand)] tabular-nums underline decoration-[var(--color-accent-bright)] decoration-2 underline-offset-4 transition-colors duration-200 hover:text-[var(--color-accent-bright)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent-bright)]"
+                className="cursor-pointer font-semibold text-[var(--color-on-brand)] tabular-nums underline decoration-[var(--color-on-brand)] decoration-2 underline-offset-4 transition-colors duration-200 hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent-bright)]"
               >
                 {site.phone}
               </a>

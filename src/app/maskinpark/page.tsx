@@ -33,7 +33,7 @@ export default function MaskinparkPage() {
                 />
                 <div className="mt-5 flex flex-1 flex-col">
                   <div className="flex items-baseline justify-between gap-4">
-                    <span className="display text-sm tracking-[0.16em] text-[var(--color-accent)]">
+                    <span className="display text-sm tracking-[0.16em] text-[var(--color-accent-text)]">
                       {m.category}
                     </span>
                     <span className="text-sm font-semibold text-[var(--color-text-muted)] tabular-nums">
@@ -77,7 +77,7 @@ export default function MaskinparkPage() {
           </p>
           <Link
             href="/kontakt"
-            className="display mt-9 inline-flex min-h-[54px] cursor-pointer items-center rounded-full border-2 border-[var(--color-on-brand)] px-9 text-xl tracking-[0.04em] transition-colors duration-200 hover:bg-[var(--color-on-brand)] hover:text-[var(--color-brand)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent-bright)]"
+            className="display mt-9 inline-flex min-h-[54px] cursor-pointer items-center rounded-full border-2 border-[var(--color-on-brand)] px-9 text-xl tracking-[0.04em] transition-colors duration-200 hover:bg-[var(--color-on-brand)] hover:text-[var(--color-brand)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-on-brand)]"
           >
             Hör av dig — {site.phone}
           </Link>

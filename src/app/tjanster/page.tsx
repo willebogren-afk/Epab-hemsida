@@ -40,7 +40,7 @@ export default function TjansterPage() {
                   </div>
 
                   <div>
-                    <p className="display text-sm tracking-[0.18em] text-[var(--color-accent)]">
+                    <p className="display text-sm tracking-[0.18em] text-[var(--color-accent-text)]">
                       {s.season}
                     </p>
                     <h2 className="display mt-2 text-[clamp(1.7rem,4vw,2.6rem)]">
@@ -83,13 +83,13 @@ export default function TjansterPage() {
           <div className="mt-9 flex flex-wrap gap-4">
             <Link
               href="/kontakt"
-              className="display flex min-h-[54px] cursor-pointer items-center rounded-full bg-[var(--color-accent)] px-9 text-xl tracking-[0.04em] text-[var(--color-text)] transition-colors duration-200 hover:bg-[var(--color-accent-bright)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-on-brand)]"
+              className="display flex min-h-[54px] cursor-pointer items-center rounded-full bg-[var(--color-brand-deep)] px-9 text-xl tracking-[0.04em] text-[var(--color-on-photo)] transition-colors duration-200 hover:bg-[var(--color-accent)] hover:text-[var(--color-text)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-on-brand)]"
             >
               Begär offert
             </Link>
             <a
               href={site.phoneHref}
-              className="display flex min-h-[54px] cursor-pointer items-center rounded-full border-2 border-[var(--color-on-brand)] px-9 text-xl tracking-[0.04em] transition-colors duration-200 hover:bg-[var(--color-on-brand)] hover:text-[var(--color-brand)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent-bright)]"
+              className="display flex min-h-[54px] cursor-pointer items-center rounded-full border-2 border-[var(--color-on-brand)] px-9 text-xl tracking-[0.04em] transition-colors duration-200 hover:bg-[var(--color-on-brand)] hover:text-[var(--color-brand)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-on-brand)]"
             >
               {site.phone}
             </a>

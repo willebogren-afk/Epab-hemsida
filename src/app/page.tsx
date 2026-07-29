@@ -23,7 +23,7 @@ function Hero() {
         sizes="100vw"
       />
 
-      <div className="relative mx-auto w-full max-w-4xl px-6 py-24 text-center text-[var(--color-on-brand)]">
+      <div className="relative mx-auto w-full max-w-4xl px-6 py-24 text-center text-[var(--color-on-photo)]">
         <h1 className="display text-[clamp(2.4rem,7.5vw,4.75rem)]">
           Vi flyttar massor.
           <br />
@@ -39,13 +39,13 @@ function Hero() {
         <div className="mt-10 flex flex-wrap justify-center gap-4">
           <Link
             href="/kontakt"
-            className="display flex min-h-[54px] cursor-pointer items-center rounded-full bg-[var(--color-accent)] px-9 text-xl tracking-[0.04em] text-[var(--color-text)] transition-colors duration-200 hover:bg-[var(--color-accent-bright)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-on-brand)]"
+            className="display flex min-h-[54px] cursor-pointer items-center rounded-full bg-[var(--color-accent)] px-9 text-xl tracking-[0.04em] text-[var(--color-text)] transition-colors duration-200 hover:bg-[var(--color-accent-bright)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-on-photo)]"
           >
             Begär offert
           </Link>
           <a
             href={site.phoneHref}
-            className="display flex min-h-[54px] cursor-pointer items-center rounded-full border-2 border-[var(--color-on-brand)] px-9 text-xl tracking-[0.04em] transition-colors duration-200 hover:bg-[var(--color-on-brand)] hover:text-[var(--color-brand)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent-bright)]"
+            className="display flex min-h-[54px] cursor-pointer items-center rounded-full border-2 border-[var(--color-on-photo)] px-9 text-xl tracking-[0.04em] transition-colors duration-200 hover:bg-[var(--color-on-photo)] hover:text-[var(--color-brand-deep)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent-bright)]"
           >
             {site.phone}
           </a>
@@ -54,7 +54,7 @@ function Hero() {
 
       <a
         href="#tjanster"
-        className="relative mx-auto mb-10 flex cursor-pointer flex-col items-center gap-2 text-[var(--color-on-brand)] transition-opacity duration-200 hover:opacity-70 focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent-bright)]"
+        className="relative mx-auto mb-10 flex cursor-pointer flex-col items-center gap-2 text-[var(--color-on-photo)] transition-opacity duration-200 hover:opacity-70 focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent-bright)]"
       >
         <span className="font-semibold">Läs mer</span>
         <span aria-hidden="true" className="h-10 w-px bg-current" />
@@ -81,7 +81,7 @@ function ServiceTiles() {
                     sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                   />
                   <span className="absolute inset-0 z-10 flex items-center justify-center p-6">
-                    <span className="display rounded-full border-2 border-[var(--color-on-brand)] px-8 py-3 text-center text-xl tracking-[0.04em] text-[var(--color-on-brand)] transition-colors duration-200 group-hover:bg-[var(--color-on-brand)] group-hover:text-[var(--color-brand)] sm:text-2xl">
+                    <span className="display rounded-full border-2 border-[var(--color-on-photo)] px-8 py-3 text-center text-xl tracking-[0.04em] text-[var(--color-on-photo)] transition-colors duration-200 group-hover:bg-[var(--color-on-photo)] group-hover:text-[var(--color-brand-deep)] sm:text-2xl">
                       {s.tileTitle}
                     </span>
                   </span>
@@ -107,7 +107,7 @@ function FleetBand() {
         soft
         sizes="100vw"
       />
-      <div className="relative mx-auto max-w-7xl px-5 py-20 text-[var(--color-on-brand)] sm:px-8 sm:py-28">
+      <div className="relative mx-auto max-w-7xl px-5 py-20 text-[var(--color-on-photo)] sm:px-8 sm:py-28">
         <h2 className="display max-w-2xl text-[clamp(1.9rem,4.5vw,3rem)]">
           Rätt maskin till rätt jobb
         </h2>
@@ -118,7 +118,7 @@ function FleetBand() {
         </p>
         <Link
           href="/maskinpark"
-          className="display mt-9 inline-flex min-h-[54px] cursor-pointer items-center rounded-full border-2 border-[var(--color-on-brand)] px-9 text-xl tracking-[0.04em] transition-colors duration-200 hover:bg-[var(--color-on-brand)] hover:text-[var(--color-brand)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent-bright)]"
+          className="display mt-9 inline-flex min-h-[54px] cursor-pointer items-center rounded-full border-2 border-[var(--color-on-photo)] px-9 text-xl tracking-[0.04em] transition-colors duration-200 hover:bg-[var(--color-on-photo)] hover:text-[var(--color-brand-deep)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent-bright)]"
         >
           Se maskinparken
         </Link>
@@ -135,7 +135,7 @@ function ContactBand() {
         alt={machines[3].imageAlt}
         sizes="100vw"
       />
-      <div className="relative mx-auto max-w-7xl px-5 py-20 text-[var(--color-on-brand)] sm:px-8 sm:py-28">
+      <div className="relative mx-auto max-w-7xl px-5 py-20 text-[var(--color-on-photo)] sm:px-8 sm:py-28">
         <h2 className="display max-w-2xl text-[clamp(1.9rem,4.5vw,3rem)]">
           Engagemang i alla uppdrag
         </h2>
@@ -145,7 +145,7 @@ function ContactBand() {
         </p>
         <Link
           href="/kontakt"
-          className="display mt-9 inline-flex min-h-[54px] cursor-pointer items-center rounded-full border-2 border-[var(--color-on-brand)] px-9 text-xl tracking-[0.04em] transition-colors duration-200 hover:bg-[var(--color-on-brand)] hover:text-[var(--color-brand)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent-bright)]"
+          className="display mt-9 inline-flex min-h-[54px] cursor-pointer items-center rounded-full border-2 border-[var(--color-on-photo)] px-9 text-xl tracking-[0.04em] transition-colors duration-200 hover:bg-[var(--color-on-photo)] hover:text-[var(--color-brand-deep)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent-bright)]"
         >
           Kontakta oss
         </Link>

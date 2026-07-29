@@ -33,7 +33,7 @@ export default function KontaktPage() {
               <p className="pt-2">
                 <a
                   href={site.phoneHref}
-                  className="cursor-pointer font-semibold tabular-nums transition-colors duration-200 hover:text-[var(--color-brand)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
+                  className="cursor-pointer font-semibold tabular-nums transition-colors duration-200 hover:text-[var(--color-brand-deep)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
                 >
                   tel. {site.phone}
                 </a>
@@ -41,7 +41,7 @@ export default function KontaktPage() {
               <p>
                 <a
                   href={`mailto:${site.email}`}
-                  className="cursor-pointer text-[var(--color-text-muted)] transition-colors duration-200 hover:text-[var(--color-brand)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
+                  className="cursor-pointer text-[var(--color-text-muted)] transition-colors duration-200 hover:text-[var(--color-brand-deep)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
                 >
                   {site.email}
                 </a>
@@ -63,7 +63,7 @@ export default function KontaktPage() {
                   <p className="mt-1">
                     <a
                       href={c.phoneHref}
-                      className="cursor-pointer font-semibold tabular-nums transition-colors duration-200 hover:text-[var(--color-brand)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
+                      className="cursor-pointer font-semibold tabular-nums transition-colors duration-200 hover:text-[var(--color-brand-deep)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
                     >
                       {c.phone}
                     </a>
@@ -71,7 +71,7 @@ export default function KontaktPage() {
                   <p>
                     <a
                       href={`mailto:${c.email}`}
-                      className="cursor-pointer break-all text-[var(--color-text-muted)] transition-colors duration-200 hover:text-[var(--color-brand)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
+                      className="cursor-pointer break-all text-[var(--color-text-muted)] transition-colors duration-200 hover:text-[var(--color-brand-deep)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
                     >
                       {c.email}
                     </a>
@@ -87,7 +87,7 @@ export default function KontaktPage() {
               Under vintersäsongen når du oss dygnet runt på{" "}
               <a
                 href={site.phoneHref}
-                className="cursor-pointer font-semibold text-[var(--color-on-brand)] tabular-nums underline decoration-[var(--color-on-brand)] decoration-2 underline-offset-4 transition-colors duration-200 hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent-bright)]"
+                className="cursor-pointer font-semibold text-[var(--color-on-brand)] tabular-nums underline decoration-[var(--color-on-brand)] decoration-2 underline-offset-4 transition-colors duration-200 hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-on-brand)]"
               >
                 {site.phone}
               </a>

@@ -223,7 +223,7 @@ export function ContactForm() {
 
 function Req() {
   return (
-    <span className="text-[var(--color-accent)]" aria-hidden="true">
+    <span className="text-[var(--color-accent-text)]" aria-hidden="true">
       *
     </span>
   );

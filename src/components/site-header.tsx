@@ -17,7 +17,7 @@ export function SiteHeader() {
           <Link
             href="/"
             onClick={() => setOpen(false)}
-            className="flex cursor-pointer items-center focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent-bright)]"
+            className="flex cursor-pointer items-center focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-on-brand)]"
             aria-label={`${site.shortName} — till startsidan`}
           >
             <Wordmark mono className="h-9 w-auto text-[var(--color-on-brand)] sm:h-10" />
@@ -34,9 +34,9 @@ export function SiteHeader() {
                   key={item.href}
                   href={item.href}
                   aria-current={active ? "page" : undefined}
-                  className={`display cursor-pointer border-b-2 pb-1 text-lg tracking-[0.04em] transition-colors duration-200 focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent-bright)] ${
+                  className={`display cursor-pointer border-b-2 pb-1 text-lg tracking-[0.04em] transition-colors duration-200 focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-on-brand)] ${
                     active
-                      ? "border-[var(--color-accent-bright)] text-[var(--color-on-brand)]"
+                      ? "border-[var(--color-brand-deep)] text-[var(--color-on-brand)]"
                       : "border-transparent text-[var(--color-on-brand-muted)] hover:text-[var(--color-on-brand)]"
                   }`}
                 >
@@ -46,7 +46,7 @@ export function SiteHeader() {
             })}
             <a
               href={site.phoneHref}
-              className="display flex min-h-[44px] cursor-pointer items-center gap-2 rounded-full border-2 border-[var(--color-on-brand)] px-6 text-lg tracking-[0.04em] text-[var(--color-on-brand)] transition-colors duration-200 hover:bg-[var(--color-on-brand)] hover:text-[var(--color-brand)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent-bright)]"
+              className="display flex min-h-[44px] cursor-pointer items-center gap-2 rounded-full border-2 border-[var(--color-on-brand)] px-6 text-lg tracking-[0.04em] text-[var(--color-on-brand)] transition-colors duration-200 hover:bg-[var(--color-on-brand)] hover:text-[var(--color-brand)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-on-brand)]"
             >
               <PhoneIcon className="h-4 w-4" />
               {site.phone}
@@ -58,7 +58,7 @@ export function SiteHeader() {
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="huvudmeny-overlay"
-            className="flex min-h-[48px] min-w-[48px] cursor-pointer items-center justify-center text-[var(--color-on-brand)] transition-colors duration-200 hover:opacity-75 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent-bright)] lg:hidden"
+            className="flex min-h-[48px] min-w-[48px] cursor-pointer items-center justify-center text-[var(--color-on-brand)] transition-colors duration-200 hover:opacity-75 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-on-brand)] lg:hidden"
           >
             <span className="sr-only">{open ? "Stäng meny" : "Öppna meny"}</span>
             {open ? (
@@ -92,8 +92,8 @@ export function SiteHeader() {
                       aria-current={active ? "page" : undefined}
                       className={`display inline-block cursor-pointer border-b-4 pb-1 text-4xl tracking-[0.02em] transition-colors duration-200 focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)] ${
                         active
-                          ? "border-[var(--color-accent)] text-[var(--color-accent)]"
-                          : "border-[var(--color-brand)] text-[var(--color-brand)]"
+                          ? "border-[var(--color-accent-text)] text-[var(--color-accent-text)]"
+                          : "border-[var(--color-brand-deep)] text-[var(--color-brand-deep)]"
                       }`}
                     >
                       {item.label}

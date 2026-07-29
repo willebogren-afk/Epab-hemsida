@@ -67,14 +67,14 @@ export default function OmOssPage() {
                 key={c.email}
                 className="border-l-4 border-[var(--color-accent)] bg-[var(--color-paper-2)] p-7"
               >
-                <p className="display text-xs tracking-[0.16em] text-[var(--color-accent)]">
+                <p className="display text-xs tracking-[0.16em] text-[var(--color-accent-text)]">
                   {c.role}
                 </p>
                 <h3 className="display mt-2 text-2xl">{c.name}</h3>
                 <p className="mt-4">
                   <a
                     href={c.phoneHref}
-                    className="cursor-pointer font-semibold tabular-nums transition-colors duration-200 hover:text-[var(--color-brand)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
+                    className="cursor-pointer font-semibold tabular-nums transition-colors duration-200 hover:text-[var(--color-brand-deep)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
                   >
                     {c.phone}
                   </a>
@@ -82,7 +82,7 @@ export default function OmOssPage() {
                 <p className="mt-1">
                   <a
                     href={`mailto:${c.email}`}
-                    className="cursor-pointer break-all text-[var(--color-text-muted)] transition-colors duration-200 hover:text-[var(--color-brand)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
+                    className="cursor-pointer break-all text-[var(--color-text-muted)] transition-colors duration-200 hover:text-[var(--color-brand-deep)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
                   >
                     {c.email}
                   </a>
@@ -101,7 +101,7 @@ export default function OmOssPage() {
           </Link>
           <Link
             href="/maskinpark"
-            className="display flex min-h-[54px] cursor-pointer items-center rounded-full border-2 border-[var(--color-brand)] px-9 text-xl tracking-[0.04em] text-[var(--color-brand)] transition-colors duration-200 hover:bg-[var(--color-brand)] hover:text-[var(--color-on-brand)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
+            className="display flex min-h-[54px] cursor-pointer items-center rounded-full border-2 border-[var(--color-brand-deep)] px-9 text-xl tracking-[0.04em] text-[var(--color-brand-deep)] transition-colors duration-200 hover:bg-[var(--color-brand-deep)] hover:text-[var(--color-on-photo)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
           >
             Se maskinparken
           </Link>

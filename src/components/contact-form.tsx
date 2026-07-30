@@ -205,7 +205,7 @@ export function ContactForm() {
 
       <button
         type="submit"
-        className="display mt-8 flex min-h-[54px] w-full cursor-pointer items-center justify-center rounded-full bg-[var(--color-accent)] px-9 text-xl tracking-[0.04em] text-[var(--color-text)] transition-colors duration-200 hover:bg-[var(--color-accent-bright)] focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[var(--color-brand)] sm:w-auto"
+        className="display mt-8 flex min-h-[54px] w-full cursor-pointer items-center justify-center rounded-full bg-[var(--color-accent)] px-9 text-xl tracking-[0.04em] text-[var(--color-on-photo)] transition-colors duration-200 hover:bg-[var(--color-accent-bright)] focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[var(--color-brand)] sm:w-auto"
       >
         Skicka förfrågan
       </button>

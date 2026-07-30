@@ -39,7 +39,7 @@ function Hero() {
         <div className="mt-10 flex flex-wrap justify-center gap-4">
           <Link
             href="/kontakt"
-            className="display flex min-h-[54px] cursor-pointer items-center rounded-full bg-[var(--color-accent)] px-9 text-xl tracking-[0.04em] text-[var(--color-text)] transition-colors duration-200 hover:bg-[var(--color-accent-bright)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-on-photo)]"
+            className="display flex min-h-[54px] cursor-pointer items-center rounded-full bg-[var(--color-on-photo)] px-9 text-xl tracking-[0.04em] text-[var(--color-brand)] transition-colors duration-200 hover:bg-[var(--color-on-photo-muted)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-on-photo)]"
           >
             Begär offert
           </Link>

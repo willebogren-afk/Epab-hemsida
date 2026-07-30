@@ -1,44 +1,41 @@
 @import "tailwindcss";
 
 :root {
-  /* Brand — varm, ljus bränd orange bär chrome (topplist, sidfot, fototoning).
-     Ljusare än en marinblå förlaga tål: vit text mot brandfärgen ligger på
-     6,2:1, vilket sätter golvet för hur ljus den kan bli. */
-  --color-brand: #eb9755;
-  --color-brand-deep: #7a3308;
-  --color-brand-dark: #7a3308;
-  --color-brand-tint: #b0560f;
-  --color-accent: #f4761c;
-  /* Accenten som textfärg mot ljus botten — den ljusa varianten når bara
-     2,6:1 där och duger bara som yta, inte som text. */
-  --color-accent-text: #a8480d;
+  /* Neutral grafitpalett — ingen kulör. Gråtonerna har en aning blå bias
+     så de läser som valda och inte som ren maskingrå. */
+  --color-brand: #22262b;
+  --color-brand-deep: #14171b;
+  --color-brand-dark: #0f1114;
+  --color-brand-tint: #2b3037;
+
+  /* Primärknapp: mörk platta med ljus text. Fungerar mot papper; över foto
+     vänds den till ljus platta med mörk text. */
+  --color-accent: #22262b;
+  --color-accent-text: #3a4049;
+  --color-accent-bright: #363c44;
 
   /* Logotypens egna färger — hör till märket, inte till sajtens tema. */
   --color-logo-red: #7d2135;
   --color-logo-ink: #1c1a1a;
 
-  /* Ljus accent: bakgrund vid hover på knappar. Den är för ljus för att
-     bära som text mot brandfärgen — där används vit i stället. */
-  --color-accent-bright: #ffab5c;
-
   --color-paper: #ffffff;
-  --color-paper-2: #f5f0ea;
-  --color-paper-3: #e8ded2;
+  --color-paper-2: #f2f3f4;
+  --color-paper-3: #e3e5e7;
 
-  --color-text: #1a1a1a;
-  --color-text-muted: #514842;
+  --color-text: #16181b;
+  --color-text-muted: #4c5258;
 
-  /* Chrome är nu ljus, så texten där är mörk. */
-  --color-on-brand: #26150a;
-  --color-on-brand-muted: #56341b;
+  /* Chrome är mörk, så texten där är ljus. */
+  --color-on-brand: #ffffff;
+  --color-on-brand-muted: #c3c8ce;
 
-  /* Fototoningen är fortfarande djup — text ovanpå foton förblir vit.
-     Två skilda tokens behövs, annars blir bildtexterna osynliga. */
+  /* Text ovanpå foto — egen token, annars följer den med när chrome-texten
+     byter riktning. */
   --color-on-photo: #ffffff;
-  --color-on-photo-muted: #f7e2d2;
+  --color-on-photo-muted: #dfe2e5;
 
-  --color-border: #ddd3c7;
-  --color-border-on-brand: #b3702f;
+  --color-border: #d7dade;
+  --color-border-on-brand: #3d434a;
 
   --font-display: var(--font-oswald), "Arial Narrow", sans-serif;
   --font-body: var(--font-source), system-ui, sans-serif;
@@ -89,12 +86,11 @@ body {
   line-height: 1.1;
 }
 
-/* The photo treatment: desaturate first, then wash with the brand colour.
-   Desaturating matters here — the machines are already orange, and tinting
-   them without it turns every photo into the same brown mud. Stripping the
-   colour first keeps the tonal contrast and reads as a deliberate duotone. */
+/* Fotobehandling: full avmättning, sedan en grafitgrå tvätt. Maskinerna är
+   orange i verkligheten — avmättningen är det som gör att sju bilder tagna
+   olika dagar läser som en och samma serie. */
 .photo-tint img {
-  filter: grayscale(0.7) contrast(1.05);
+  filter: grayscale(1) contrast(1.06);
 }
 
 .photo-tint::after {
@@ -126,11 +122,11 @@ body {
   pointer-events: none;
   background: linear-gradient(
     to bottom,
-    rgba(58, 24, 4, 0) 0%,
-    rgba(58, 24, 4, 0.34) 26%,
-    rgba(58, 24, 4, 0.46) 55%,
-    rgba(58, 24, 4, 0.34) 82%,
-    rgba(58, 24, 4, 0.1) 100%
+    rgba(10, 12, 14, 0) 0%,
+    rgba(10, 12, 14, 0.34) 26%,
+    rgba(10, 12, 14, 0.46) 55%,
+    rgba(10, 12, 14, 0.34) 82%,
+    rgba(10, 12, 14, 0.1) 100%
   );
 }
 

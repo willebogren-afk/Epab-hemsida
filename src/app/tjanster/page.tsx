@@ -83,7 +83,7 @@ export default function TjansterPage() {
           <div className="mt-9 flex flex-wrap gap-4">
             <Link
               href="/kontakt"
-              className="display flex min-h-[54px] cursor-pointer items-center rounded-full bg-[var(--color-brand-deep)] px-9 text-xl tracking-[0.04em] text-[var(--color-on-photo)] transition-colors duration-200 hover:bg-[var(--color-accent)] hover:text-[var(--color-text)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-on-brand)]"
+              className="display flex min-h-[54px] cursor-pointer items-center rounded-full bg-[var(--color-on-brand)] px-9 text-xl tracking-[0.04em] text-[var(--color-brand)] transition-colors duration-200 hover:bg-[var(--color-on-brand-muted)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-on-brand)]"
             >
               Begär offert
             </Link>

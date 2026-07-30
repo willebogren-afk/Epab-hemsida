@@ -36,7 +36,7 @@ export function SiteHeader() {
                   aria-current={active ? "page" : undefined}
                   className={`display cursor-pointer border-b-2 pb-1 text-lg tracking-[0.04em] transition-colors duration-200 focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-on-brand)] ${
                     active
-                      ? "border-[var(--color-brand-deep)] text-[var(--color-on-brand)]"
+                      ? "border-[var(--color-on-brand)] text-[var(--color-on-brand)]"
                       : "border-transparent text-[var(--color-on-brand-muted)] hover:text-[var(--color-on-brand)]"
                   }`}
                 >
@@ -92,8 +92,8 @@ export function SiteHeader() {
                       aria-current={active ? "page" : undefined}
                       className={`display inline-block cursor-pointer border-b-4 pb-1 text-4xl tracking-[0.02em] transition-colors duration-200 focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)] ${
                         active
-                          ? "border-[var(--color-accent-text)] text-[var(--color-accent-text)]"
-                          : "border-[var(--color-brand-deep)] text-[var(--color-brand-deep)]"
+                          ? "border-[var(--color-text)] text-[var(--color-text)]"
+                          : "border-[var(--color-border)] text-[var(--color-text-muted)]"
                       }`}
                     >
                       {item.label}
@@ -105,7 +105,7 @@ export function SiteHeader() {
 
             <a
               href={site.phoneHref}
-              className="display mt-12 flex min-h-[56px] w-full cursor-pointer items-center justify-center gap-3 rounded-full bg-[var(--color-accent)] px-6 text-2xl tracking-[0.04em] text-[var(--color-text)] transition-colors duration-200 hover:bg-[var(--color-accent-bright)] focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[var(--color-brand)]"
+              className="display mt-12 flex min-h-[56px] w-full cursor-pointer items-center justify-center gap-3 rounded-full bg-[var(--color-accent)] px-6 text-2xl tracking-[0.04em] text-[var(--color-on-photo)] transition-colors duration-200 hover:bg-[var(--color-accent-bright)] focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[var(--color-brand)]"
             >
               <PhoneIcon className="h-5 w-5" />
               Ring {site.phone}

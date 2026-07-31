@@ -86,56 +86,11 @@ body {
   line-height: 1.1;
 }
 
-/* Fotobehandling: full avmättning, sedan en grafitgrå tvätt. Maskinerna är
-   orange i verkligheten — avmättningen är det som gör att sju bilder tagna
-   olika dagar läser som en och samma serie. */
-.photo-tint img {
-  filter: grayscale(1) contrast(1.06);
-}
-
-.photo-tint::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--color-brand-tint);
-  opacity: 0.72;
-  mix-blend-mode: multiply;
-  pointer-events: none;
-}
-
-/* A second, flat pass guarantees the contrast floor for white text even where
-   multiply lands on a near-white sky. */
-.photo-tint::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: var(--color-brand-dark);
-  opacity: 0.16;
-  pointer-events: none;
-}
-
-.photo-scrim {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  background: linear-gradient(
-    to bottom,
-    rgba(10, 12, 14, 0) 0%,
-    rgba(10, 12, 14, 0.34) 26%,
-    rgba(10, 12, 14, 0.46) 55%,
-    rgba(10, 12, 14, 0.34) 82%,
-    rgba(10, 12, 14, 0.1) 100%
-  );
-}
-
-.photo-tint-soft::before {
-  opacity: 0.10;
-}
-
-.photo-tint-soft::after {
-  opacity: 0.5;
+/* Fotona är helt orörda — ingen toning, ingen mörkning, ingen avmättning.
+   Text som ligger över bild står i stället på en egen solid platta. */
+.photo-panel {
+  background: var(--color-brand);
+  color: var(--color-on-photo);
 }
 
 @media (prefers-reduced-motion: reduce) {

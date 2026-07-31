@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHeader } from "@/components/page-header";
-import { TintedPhoto } from "@/components/tinted-photo";
+import { CoverPhoto } from "@/components/cover-photo";
 import { services, site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -31,10 +31,9 @@ export default function TjansterPage() {
                       i % 2 === 1 ? "lg:order-2" : ""
                     }`}
                   >
-                    <TintedPhoto
+                    <CoverPhoto
                       src={s.image}
                       alt={s.imageAlt}
-                      soft
                       sizes="(min-width: 1024px) 50vw, 100vw"
                     />
                   </div>

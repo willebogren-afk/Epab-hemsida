@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { TintedPhoto } from "@/components/tinted-photo";
+import { CoverPhoto } from "@/components/cover-photo";
 import { machines, services, site } from "@/lib/site";
 
 export default function Home() {
@@ -16,14 +16,14 @@ export default function Home() {
 function Hero() {
   return (
     <section className="relative isolate flex min-h-[calc(100svh-84px)] flex-col justify-center overflow-hidden">
-      <TintedPhoto
+      <CoverPhoto
         src={machines[5].image!}
         alt={machines[5].imageAlt}
         priority
         sizes="100vw"
       />
 
-      <div className="relative mx-auto w-full max-w-4xl px-6 py-24 text-center text-[var(--color-on-photo)]">
+      <div className="photo-panel relative mx-auto my-16 w-[min(56rem,calc(100%-2rem))] px-6 py-16 text-center sm:px-12">
         <h1 className="display text-[clamp(2.4rem,7.5vw,4.75rem)]">
           Vi flyttar massor.
           <br />
@@ -75,13 +75,13 @@ function ServiceTiles() {
                 className="group block cursor-pointer focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
               >
                 <div className="relative aspect-[4/5] overflow-hidden md:aspect-[4/3]">
-                  <TintedPhoto
+                  <CoverPhoto
                     src={s.image}
                     alt={s.imageAlt}
                     sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                   />
                   <span className="absolute inset-0 z-10 flex items-center justify-center p-6">
-                    <span className="display rounded-full border-2 border-[var(--color-on-photo)] px-8 py-3 text-center text-xl tracking-[0.04em] text-[var(--color-on-photo)] transition-colors duration-200 group-hover:bg-[var(--color-on-photo)] group-hover:text-[var(--color-brand-deep)] sm:text-2xl">
+                    <span className="display rounded-full bg-[var(--color-brand)] px-8 py-3 text-center text-xl tracking-[0.04em] text-[var(--color-on-photo)] transition-colors duration-200 group-hover:bg-[var(--color-on-photo)] group-hover:text-[var(--color-brand)] sm:text-2xl">
                       {s.tileTitle}
                     </span>
                   </span>
@@ -101,13 +101,13 @@ function ServiceTiles() {
 function FleetBand() {
   return (
     <section className="relative isolate overflow-hidden">
-      <TintedPhoto
+      <CoverPhoto
         src={machines[4].image!}
         alt={machines[4].imageAlt}
-        soft
         sizes="100vw"
       />
-      <div className="relative mx-auto max-w-7xl px-5 py-20 text-[var(--color-on-photo)] sm:px-8 sm:py-28">
+      <div className="relative mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">
+        <div className="photo-panel max-w-2xl p-8 sm:p-12">
         <h2 className="display max-w-2xl text-[clamp(1.9rem,4.5vw,3rem)]">
           Rätt maskin till rätt jobb
         </h2>
@@ -122,6 +122,7 @@ function FleetBand() {
         >
           Se maskinparken
         </Link>
+        </div>
       </div>
     </section>
   );
@@ -130,12 +131,13 @@ function FleetBand() {
 function ContactBand() {
   return (
     <section className="relative isolate overflow-hidden">
-      <TintedPhoto
+      <CoverPhoto
         src={machines[3].image!}
         alt={machines[3].imageAlt}
         sizes="100vw"
       />
-      <div className="relative mx-auto max-w-7xl px-5 py-20 text-[var(--color-on-photo)] sm:px-8 sm:py-28">
+      <div className="relative mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">
+        <div className="photo-panel max-w-2xl p-8 sm:p-12">
         <h2 className="display max-w-2xl text-[clamp(1.9rem,4.5vw,3rem)]">
           Engagemang i alla uppdrag
         </h2>
@@ -149,6 +151,7 @@ function ContactBand() {
         >
           Kontakta oss
         </Link>
+        </div>
       </div>
     </section>
   );

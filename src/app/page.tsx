@@ -18,14 +18,14 @@ function Hero() {
     <section>
       <div className="bg-[var(--color-brand)] text-[var(--color-on-brand)]">
         <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">
-          <h1 className="display max-w-3xl text-[clamp(2.4rem,7vw,4.5rem)]">
-            Vi flyttar massor. Och snö.
+          <h1 className="display max-w-3xl text-[clamp(2.2rem,6vw,4.2rem)]">
+            Vi har grävt i småländsk mark sedan 2009.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[var(--color-on-brand-muted)]">
-            Med egna maskiner, egna förare och jour dygnet runt utför vi mark
-            och schakt, väghållning, krossning och snöröjning. EPAB
-            Maskintjänst AB utgår från Fliseryd och arbetar i Oskarshamn,
-            Mönsterås och övriga Kalmar län.
+            Erik och Per sitter själva i maskinerna, med ett fast lag och egen
+            maskinpark bakom sig. Det gör att vi klarar det mesta inom mark och
+            anläggning i Kalmar län — från husgrund till krossat berg, året
+            runt.
           </p>
           <div className="mt-9 flex flex-wrap gap-4">
             <Link

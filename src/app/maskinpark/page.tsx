@@ -16,8 +16,6 @@ export default function MaskinparkPage() {
       <PageHeader
         title="Maskinerna vi kör"
         lead="Alla maskiner är våra egna och körs av våra egna förare. Aggregaten byts efter säsong, så samma hjullastare sopar på våren och plogar på vintern."
-        image={machines[4].image!}
-        imageAlt={machines[4].imageAlt}
       />
 
       <div className="bg-[var(--color-paper-2)]">

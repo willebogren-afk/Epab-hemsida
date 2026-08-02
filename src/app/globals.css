@@ -86,13 +86,6 @@ body {
   line-height: 1.1;
 }
 
-/* Fotona är helt orörda — ingen toning, ingen mörkning, ingen avmättning.
-   Text som ligger över bild står i stället på en egen solid platta. */
-.photo-panel {
-  background: var(--color-brand);
-  color: var(--color-on-photo);
-}
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CoverPhoto } from "@/components/cover-photo";
+import { Photo } from "@/components/photo";
 import { machines, services, site } from "@/lib/site";
 
 export default function Home() {
@@ -15,50 +15,44 @@ export default function Home() {
 
 function Hero() {
   return (
-    <section className="relative isolate flex min-h-[calc(100svh-84px)] flex-col justify-center overflow-hidden">
-      <CoverPhoto
-        src={machines[5].image!}
-        alt={machines[5].imageAlt}
-        priority
-        sizes="100vw"
-      />
-
-      <div className="photo-panel relative mx-auto my-16 w-[min(56rem,calc(100%-2rem))] px-6 py-16 text-center sm:px-12">
-        <h1 className="display text-[clamp(2.4rem,7.5vw,4.75rem)]">
-          Vi flyttar massor.
-          <br />
-          Och snö.
-        </h1>
-        <p className="mx-auto mt-7 max-w-2xl text-lg leading-relaxed font-semibold sm:text-xl">
-          Med egna maskiner, egna förare och jour dygnet runt utför vi mark och
-          schakt, väghållning, krossning och snöröjning. EPAB Maskintjänst AB
-          utgår från Fliseryd och arbetar i Oskarshamn, Mönsterås och övriga
-          Kalmar län.
-        </p>
-
-        <div className="mt-10 flex flex-wrap justify-center gap-4">
-          <Link
-            href="/kontakt"
-            className="display flex min-h-[54px] cursor-pointer items-center rounded-full bg-[var(--color-on-photo)] px-9 text-xl tracking-[0.04em] text-[var(--color-brand)] transition-colors duration-200 hover:bg-[var(--color-on-photo-muted)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-on-photo)]"
-          >
-            Begär offert
-          </Link>
-          <a
-            href={site.phoneHref}
-            className="display flex min-h-[54px] cursor-pointer items-center rounded-full border-2 border-[var(--color-on-photo)] px-9 text-xl tracking-[0.04em] transition-colors duration-200 hover:bg-[var(--color-on-photo)] hover:text-[var(--color-brand-deep)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent-bright)]"
-          >
-            {site.phone}
-          </a>
+    <section>
+      <div className="bg-[var(--color-brand)] text-[var(--color-on-brand)]">
+        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">
+          <h1 className="display max-w-3xl text-[clamp(2.4rem,7vw,4.5rem)]">
+            Vi flyttar massor. Och snö.
+          </h1>
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[var(--color-on-brand-muted)]">
+            Med egna maskiner, egna förare och jour dygnet runt utför vi mark
+            och schakt, väghållning, krossning och snöröjning. EPAB
+            Maskintjänst AB utgår från Fliseryd och arbetar i Oskarshamn,
+            Mönsterås och övriga Kalmar län.
+          </p>
+          <div className="mt-9 flex flex-wrap gap-4">
+            <Link
+              href="/kontakt"
+              className="display flex min-h-[54px] cursor-pointer items-center rounded-full bg-[var(--color-on-brand)] px-9 text-xl tracking-[0.04em] text-[var(--color-brand)] transition-colors duration-200 hover:bg-[var(--color-on-brand-muted)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-on-brand)]"
+            >
+              Begär offert
+            </Link>
+            <a
+              href={site.phoneHref}
+              className="display flex min-h-[54px] cursor-pointer items-center rounded-full border-2 border-[var(--color-on-brand)] px-9 text-xl tracking-[0.04em] transition-colors duration-200 hover:bg-[var(--color-on-brand)] hover:text-[var(--color-brand)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-on-brand)]"
+            >
+              {site.phone}
+            </a>
+          </div>
         </div>
       </div>
 
-      <a
-        href="#tjanster"
-        className="relative mx-auto mb-10 flex cursor-pointer flex-col items-center gap-2 text-[var(--color-on-photo)] transition-opacity duration-200 hover:opacity-70 focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent-bright)]"
-      >
-        <span className="font-semibold">Läs mer</span>
-        <span aria-hidden="true" className="h-10 w-px bg-current" />
-      </a>
+      {/* Fotot står för sig självt, i hela sin bredd och sina egna
+          proportioner. Ingenting ligger ovanpå det. */}
+      <Photo
+        src={machines[5].image}
+        alt={machines[5].imageAlt}
+        ratio="aspect-[16/9]"
+        priority
+        sizes="100vw"
+      />
     </section>
   );
 }
@@ -67,27 +61,27 @@ function ServiceTiles() {
   return (
     <section id="tjanster" className="scroll-mt-24 bg-[var(--color-paper-2)]">
       <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">
-        <ul className="grid gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+        <h2 className="display text-[clamp(1.8rem,4.5vw,2.8rem)]">
+          Uppdragen vi tar oss an
+        </h2>
+
+        <ul className="mt-12 grid gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
           {services.map((s) => (
-            <li key={s.slug}>
+            <li key={s.slug} className="flex flex-col">
               <Link
                 href={`/tjanster#${s.slug}`}
-                className="group block cursor-pointer focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
+                className="group flex cursor-pointer flex-col focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
               >
-                <div className="relative aspect-[4/5] overflow-hidden md:aspect-[4/3]">
-                  <CoverPhoto
-                    src={s.image}
-                    alt={s.imageAlt}
-                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                  />
-                  <span className="absolute inset-0 z-10 flex items-center justify-center p-6">
-                    <span className="display rounded-full bg-[var(--color-brand)] px-8 py-3 text-center text-xl tracking-[0.04em] text-[var(--color-on-photo)] transition-colors duration-200 group-hover:bg-[var(--color-on-photo)] group-hover:text-[var(--color-brand)] sm:text-2xl">
-                      {s.tileTitle}
-                    </span>
-                  </span>
-                </div>
+                <Photo
+                  src={s.image}
+                  alt={s.imageAlt}
+                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                />
+                <span className="display mt-5 text-2xl transition-colors duration-200 group-hover:text-[var(--color-accent-text)]">
+                  {s.title}
+                </span>
               </Link>
-              <p className="mt-4 text-lg leading-relaxed text-[var(--color-text)]">
+              <p className="mt-3 leading-relaxed text-[var(--color-text-muted)]">
                 {s.summary}
               </p>
             </li>
@@ -100,57 +94,57 @@ function ServiceTiles() {
 
 function FleetBand() {
   return (
-    <section className="relative isolate overflow-hidden">
-      <CoverPhoto
-        src={machines[4].image!}
-        alt={machines[4].imageAlt}
-        sizes="100vw"
-      />
-      <div className="relative mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">
-        <div className="photo-panel max-w-2xl p-8 sm:p-12">
+    <section className="bg-[var(--color-brand)] text-[var(--color-on-brand)]">
+      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">
         <h2 className="display max-w-2xl text-[clamp(1.9rem,4.5vw,3rem)]">
           Rätt maskin till rätt jobb
         </h2>
-        <p className="mt-5 max-w-xl text-lg leading-relaxed font-semibold">
+        <p className="mt-5 max-w-xl text-lg leading-relaxed text-[var(--color-on-brand-muted)]">
           Från väghyvel och markberedare till 30-tons långgrävare och mobila
           krossverk. Hjullastarna byter aggregat efter säsong: sopvals på våren,
           vikplog och sandspridare på vintern.
         </p>
         <Link
           href="/maskinpark"
-          className="display mt-9 inline-flex min-h-[54px] cursor-pointer items-center rounded-full border-2 border-[var(--color-on-photo)] px-9 text-xl tracking-[0.04em] transition-colors duration-200 hover:bg-[var(--color-on-photo)] hover:text-[var(--color-brand-deep)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent-bright)]"
+          className="display mt-9 inline-flex min-h-[54px] cursor-pointer items-center rounded-full border-2 border-[var(--color-on-brand)] px-9 text-xl tracking-[0.04em] transition-colors duration-200 hover:bg-[var(--color-on-brand)] hover:text-[var(--color-brand)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-on-brand)]"
         >
           Se maskinparken
         </Link>
-        </div>
       </div>
+      <Photo
+        src={machines[4].image}
+        alt={machines[4].imageAlt}
+        ratio="aspect-[16/9]"
+        sizes="100vw"
+      />
     </section>
   );
 }
 
 function ContactBand() {
   return (
-    <section className="relative isolate overflow-hidden">
-      <CoverPhoto
-        src={machines[3].image!}
-        alt={machines[3].imageAlt}
-        sizes="100vw"
-      />
-      <div className="relative mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">
-        <div className="photo-panel max-w-2xl p-8 sm:p-12">
+    <section className="bg-[var(--color-paper-2)]">
+      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">
         <h2 className="display max-w-2xl text-[clamp(1.9rem,4.5vw,3rem)]">
           Engagemang i alla uppdrag
         </h2>
-        <p className="mt-5 max-w-xl text-lg leading-relaxed font-semibold">
+        <p className="mt-5 max-w-xl text-lg leading-relaxed text-[var(--color-text-muted)]">
           Ring Erik eller Per direkt, eller skicka en förfrågan via formuläret.
           Vi återkommer med svar snarast.
         </p>
-        <Link
-          href="/kontakt"
-          className="display mt-9 inline-flex min-h-[54px] cursor-pointer items-center rounded-full border-2 border-[var(--color-on-photo)] px-9 text-xl tracking-[0.04em] transition-colors duration-200 hover:bg-[var(--color-on-photo)] hover:text-[var(--color-brand-deep)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent-bright)]"
-        >
-          Kontakta oss
-        </Link>
+        <div className="mt-9 flex flex-wrap gap-4">
+          <Link
+            href="/kontakt"
+            className="display flex min-h-[54px] cursor-pointer items-center rounded-full bg-[var(--color-accent)] px-9 text-xl tracking-[0.04em] text-[var(--color-on-photo)] transition-colors duration-200 hover:bg-[var(--color-accent-bright)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-brand)]"
+          >
+            Kontakta oss
+          </Link>
+          <a
+            href={site.phoneHref}
+            className="display flex min-h-[54px] cursor-pointer items-center rounded-full border-2 border-[var(--color-brand)] px-9 text-xl tracking-[0.04em] text-[var(--color-brand)] transition-colors duration-200 hover:bg-[var(--color-brand)] hover:text-[var(--color-on-brand)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
+          >
+            {site.phone}
+          </a>
         </div>
       </div>
     </section>

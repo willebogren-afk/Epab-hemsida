@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHeader } from "@/components/page-header";
-import { CoverPhoto } from "@/components/cover-photo";
+import { Photo } from "@/components/photo";
 import { services, site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -16,8 +16,6 @@ export default function TjansterPage() {
       <PageHeader
         title="Tjänster"
         lead="Vi tar både enstaka uppdrag och löpande avtal. Vet du inte vad ditt jobb kräver? Ring och beskriv det — vi säger vad som behövs."
-        image={services[0].image}
-        imageAlt={services[0].imageAlt}
       />
 
       <div className="bg-[var(--color-paper-2)]">
@@ -26,17 +24,12 @@ export default function TjansterPage() {
             {services.map((s, i) => (
               <li key={s.slug} id={s.slug} className="scroll-mt-28">
                 <article className="grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
-                  <div
-                    className={`relative aspect-[4/3] overflow-hidden ${
-                      i % 2 === 1 ? "lg:order-2" : ""
-                    }`}
-                  >
-                    <CoverPhoto
-                      src={s.image}
-                      alt={s.imageAlt}
-                      sizes="(min-width: 1024px) 50vw, 100vw"
-                    />
-                  </div>
+                  <Photo
+                    src={s.image}
+                    alt={s.imageAlt}
+                    className={i % 2 === 1 ? "lg:order-2" : ""}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                  />
 
                   <div>
                     <p className="display text-sm tracking-[0.18em] text-[var(--color-accent-text)]">

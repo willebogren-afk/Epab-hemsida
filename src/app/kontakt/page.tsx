@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/page-header";
 import { ContactForm } from "@/components/contact-form";
-import { machines, site } from "@/lib/site";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Kontakt",
@@ -15,8 +15,6 @@ export default function KontaktPage() {
       <PageHeader
         title="Välkommen att kontakta oss"
         lead="Har du tankar och funderingar kring våra tjänster? Ring Erik eller Per direkt, eller använd formuläret. Vi återkommer med svar snarast."
-        image={machines[1].image!}
-        imageAlt={machines[1].imageAlt}
       />
 
       <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">

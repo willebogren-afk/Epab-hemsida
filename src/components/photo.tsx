@@ -6,7 +6,7 @@ type PhotoProps = {
   /** Sökväg under /public, t.ex. "/maskinpark/sopning.jpg" */
   src: string | null;
   alt: string;
-  /** Tailwind aspect-ratio class, e.g. "aspect-[4/3]" */
+  /** Tailwind-format, t.ex. "aspect-[4/3]" */
   ratio?: string;
   className?: string;
   priority?: boolean;
@@ -14,12 +14,11 @@ type PhotoProps = {
 };
 
 /**
- * Renders the photo when the file is actually present in /public, otherwise a
- * labelled slot naming the exact shot needed. Checking the filesystem here means
- * dropping a correctly named file into /public is the only step required — no
- * code edit, and never a broken image if a file is missing.
+ * Fotot i naturlig färg — ingen toning, ingen avmättning, ingenting ovanpå.
+ * Bilden beskärs till formatet så rutnätet blir jämnt.
  *
- * Server component only: it reads from disk at build/prerender time.
+ * Serverkomponent: kontrollerar på disk om filen finns, så en saknad bild ger
+ * en märkt platshållare i stället för en trasig ruta.
  */
 export function Photo({
   src,
@@ -29,9 +28,7 @@ export function Photo({
   priority = false,
   sizes = "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw",
 }: PhotoProps) {
-  const available = src !== null && existsInPublic(src);
-
-  if (available) {
+  if (src && existsInPublic(src)) {
     return (
       <div className={`relative overflow-hidden ${ratio} ${className}`}>
         <Image
@@ -48,7 +45,7 @@ export function Photo({
 
   return (
     <div
-      className={`relative flex ${ratio} flex-col justify-between overflow-hidden border-2 border-dashed border-[var(--color-border)] bg-[var(--color-paper)] p-5 ${className}`}
+      className={`flex ${ratio} flex-col justify-between overflow-hidden border-2 border-dashed border-[var(--color-border)] bg-[var(--color-paper)] p-5 ${className}`}
     >
       <span className="display text-sm tracking-[0.16em] text-[var(--color-text-muted)]">
         Bild saknas

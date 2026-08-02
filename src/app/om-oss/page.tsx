@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHeader } from "@/components/page-header";
-import { machines, site } from "@/lib/site";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Om oss",
@@ -15,8 +15,6 @@ export default function OmOssPage() {
       <PageHeader
         title="Två förare som blev ett åkeri"
         lead="EPAB Maskintjänst startades 2009 av Erik Gustafsson och Per Ringberg. Sedan dess har vi vuxit till ett lag med egna maskiner och fasta uppdrag i hela Kalmar län."
-        image={machines[3].image!}
-        imageAlt={machines[3].imageAlt}
       />
 
       <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">

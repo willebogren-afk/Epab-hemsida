@@ -7,7 +7,7 @@ import { services, site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Tjänster",
   description:
-    "Mark och schakt, väghållning, snöröjning, sopning, skogsarbete, krossning och transport av massor i Kalmar län.",
+    "Mark och schakt, väghållning, snöröjning, sopning, skogsvägsbyggnation och krossning i Kalmar län.",
 };
 
 export default function TjansterPage() {

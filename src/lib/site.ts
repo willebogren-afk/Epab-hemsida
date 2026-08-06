@@ -61,7 +61,7 @@ export const services: Service[] = [
       "Husgrunder och plattor",
       "VA-ledningar och servisanslutningar",
       "Dränering och dagvattenhantering",
-      "Massutbyte och terrassering",
+      "Terrassering och finplanering",
     ],
     season: "Året runt",
     image: "/maskinpark/langgravare.jpg",
@@ -94,7 +94,7 @@ export const services: Service[] = [
     details: [
       "Plogning med hjullastare och vikplog",
       "Sandning och saltning",
-      "Bortforsling av snö",
+      "Uppsamling och undanröjning av snö",
       "Säsongsavtal med jourberedskap",
     ],
     season: "Vinter",
@@ -112,7 +112,7 @@ export const services: Service[] = [
       "Vårsopning efter vintersäsong",
       "Sopning av parkeringar och industriytor",
       "Dammbindning med vatten",
-      "Bortforsling av sopmassor",
+      "Uppsamling av sopmassor",
     ],
     season: "Barmark",
     image: "/maskinpark/sopning.jpg",
@@ -146,29 +146,12 @@ export const services: Service[] = [
       "Krossning av sprängsten och berg",
       "Återvinning av rivnings- och betongmassor",
       "Siktning till bärlager och makadam",
-      "Krossverket flyttas ut till arbetsplatsen",
+      "Krossning direkt på arbetsplatsen",
     ],
     season: "Barmark",
     image: "/maskinpark/forkross.jpg",
     imageAlt:
       "Grävmaskin som matar en mobil förkross på ett upplag.",
-  },
-  {
-    slug: "transport-och-massor",
-    tileTitle: "Transport",
-    title: "Transport och massor",
-    summary:
-      "Leverans av grus, matjord och bergkross samt bortforsling av schaktmassor.",
-    details: [
-      "Grus, bärlager och bergkross",
-      "Matjord och anläggningsjord",
-      "Bortforsling av schakt- och rivningsmassor",
-      "Maskinflytt inom regionen",
-    ],
-    season: "Året runt",
-    image: "/maskinpark/efterkross.jpg",
-    imageAlt:
-      "Sorteringsverk med en hög färdigsiktad makadam.",
   },
 ];
 

@@ -71,7 +71,7 @@ export default function MaskinparkPage() {
           </h2>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-[var(--color-on-brand-muted)]">
             Vi samarbetar med andra entreprenörer i regionen och löser
-            bemanning, transport och extra maskiner vid större uppdrag.
+            bemanning och extra maskiner vid större uppdrag.
           </p>
           <Link
             href="/kontakt"

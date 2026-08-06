@@ -13,7 +13,7 @@ export default function OmOssPage() {
   return (
     <>
       <PageHeader
-        title="Två förare som blev ett åkeri"
+        title="Två förare som blev ett maskinföretag"
         lead="EPAB Maskintjänst startades 2009 av Erik Gustafsson och Per Ringberg. Sedan dess har vi vuxit till ett lag med egna maskiner och fasta uppdrag i hela Kalmar län."
       />
 

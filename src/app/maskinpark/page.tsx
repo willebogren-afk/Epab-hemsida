@@ -7,7 +7,7 @@ import { machines, site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Maskinpark",
   description:
-    "EPAB:s maskinpark: hjullastare med sop- och plogaggregat, väghyvel, markberedare, långgrävare och mobila krossverk.",
+    "EPAB:s maskinpark: hjullastare med sop- och plogaggregat, väghyvel, markberedare, hjulgrävare, långgrävare och mobila krossverk.",
 };
 
 export default function MaskinparkPage() {
@@ -27,6 +27,7 @@ export default function MaskinparkPage() {
                   src={m.image}
                   alt={m.imageAlt}
                   ratio="aspect-[4/3]"
+                  focus={m.focus}
                   sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                 />
                 <div className="mt-5 flex flex-1 flex-col">

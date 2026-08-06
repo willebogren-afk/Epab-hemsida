@@ -8,6 +8,12 @@ type PhotoProps = {
   alt: string;
   /** Tailwind-format, t.ex. "aspect-[4/3]" */
   ratio?: string;
+  /**
+   * Vilken del av bilden som ska överleva beskärningen, som CSS
+   * object-position. Stående mobilfoton i en liggande ruta tappar annars
+   * motivet — sätt t.ex. "50% 25%" för att hålla maskinen i bild.
+   */
+  focus?: string;
   className?: string;
   priority?: boolean;
   sizes?: string;
@@ -24,6 +30,7 @@ export function Photo({
   src,
   alt,
   ratio = "aspect-[4/3]",
+  focus = "50% 50%",
   className = "",
   priority = false,
   sizes = "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw",
@@ -38,6 +45,7 @@ export function Photo({
           sizes={sizes}
           priority={priority}
           className="object-cover"
+          style={{ objectPosition: focus }}
         />
       </div>
     );

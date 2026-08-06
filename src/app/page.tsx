@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Photo } from "@/components/photo";
-import { machines, services, site } from "@/lib/site";
+import { featured, services, site } from "@/lib/site";
 
 export default function Home() {
   return (
@@ -45,9 +45,10 @@ function Hero() {
       {/* Fotot står för sig självt, i hela sin bredd och sina egna
           proportioner. Ingenting ligger ovanpå det. */}
       <Photo
-        src={machines[5].image}
-        alt={machines[5].imageAlt}
+        src={featured.hero.image}
+        alt={featured.hero.alt}
         ratio="aspect-[16/9]"
+        focus={featured.hero.focus}
         priority
         sizes="100vw"
       />
@@ -110,9 +111,10 @@ function FleetBand() {
         </Link>
       </div>
       <Photo
-        src={machines[4].image}
-        alt={machines[4].imageAlt}
+        src={featured.fleet.image}
+        alt={featured.fleet.alt}
         ratio="aspect-[16/9]"
+        focus={featured.fleet.focus}
         sizes="100vw"
       />
     </section>

@@ -155,6 +155,23 @@ export const services: Service[] = [
   },
 ];
 
+/**
+ * Bilderna som bär startsidan. Ligger här i stället för som index i
+ * machines[], så att maskinlistan kan växa utan att startsidan byter foto.
+ */
+export const featured = {
+  hero: {
+    image: "/maskinpark/va-schakt.jpg",
+    alt: "Orange EPAB-bandgrävare vid ett öppet VA-schakt i en villagata, med nya avloppsrör och dagvattenledning framme vid schaktkanten.",
+    focus: "50% 25%",
+  },
+  fleet: {
+    image: "/maskinpark/hjulgravare.jpg",
+    alt: "Två orange EPAB-hjulgrävare uppställda intill varandra på ett grusupplag, med en maskintrailer bakom och en industribyggnad i bakgrunden.",
+    focus: "50% 15%",
+  },
+} as const;
+
 export type Machine = {
   name: string;
   category: string;
@@ -164,6 +181,8 @@ export type Machine = {
   /* Sökväg under /public. Visas automatiskt så fort filen finns på plats. */
   image: string | null;
   imageAlt: string;
+  /* Sätts bara för stående foton, som annars tappar maskinen i beskärningen. */
+  focus?: string;
 };
 
 export const machines: Machine[] = [
@@ -206,6 +225,17 @@ export const machines: Machine[] = [
     image: "/maskinpark/markberedning.jpg",
     imageAlt:
       "Orange EPAB-bandgrävare på ett hygge med markberedningsaggregat lyft högt i luften.",
+  },
+  {
+    name: "Två hjulgrävare DX160W",
+    category: "Hjulgrävare",
+    weight: "ca 17 ton/st",
+    attachments: ["Tiltrotator", "Planeringsblad", "Grävskopor"],
+    note: "Går på egna hjul mellan tomter och gator. Används för VA-schakt och ledningsarbeten i tätort, där bandgående maskiner sliter på asfalten.",
+    image: "/maskinpark/hjulgravare.jpg",
+    imageAlt:
+      "Två orange EPAB-hjulgrävare uppställda intill varandra på ett grusupplag, med en maskintrailer bakom och en industribyggnad i bakgrunden.",
+    focus: "50% 25%",
   },
   {
     name: "Långgrävare för schakt",

@@ -27,8 +27,8 @@ export default function OmOssPage() {
             </p>
             <p>
               Det som gör oss användbara är bredden över året. Under barmark
-              schaktar vi grunder, hyvlar grusvägar, krossar berg och bereder
-              mark inför plantering. När snön kommer plogar och sandar samma
+              schaktar vi grunder, river byggnader, hyvlar grusvägar, krossar
+              berg och bereder mark inför plantering. När snön kommer plogar och sandar samma
               maskiner — med jour dygnet runt genom hela vintersäsongen.
             </p>
             <p>

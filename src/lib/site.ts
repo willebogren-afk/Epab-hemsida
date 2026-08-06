@@ -36,7 +36,9 @@ export type Service = {
   summary: string;
   details: string[];
   season: "Året runt" | "Vinter" | "Barmark";
-  image: string;
+  /* null tills fotot finns — då visas en märkt platshållare i stället för
+     en bild som föreställer något annat. */
+  image: string | null;
   imageAlt: string;
   /* Sätts bara för stående foton, som annars tappar maskinen i beskärningen. */
   focus?: string;
@@ -60,6 +62,23 @@ export const services: Service[] = [
     imageAlt:
       "Orange EPAB-bandgrävare vid ett öppet VA-schakt i en villagata, med nya avloppsrör och dagvattenledning framme vid schaktkanten.",
     focus: "50% 25%",
+  },
+  {
+    slug: "rivning",
+    tileTitle: "Rivning",
+    title: "Rivning",
+    summary:
+      "Rivning av byggnader, grunder och konstruktioner, med sortering av massorna direkt på plats.",
+    details: [
+      "Rivning av bostadshus, ekonomibyggnader och industrilokaler",
+      "Rivning av grunder, plattor och murar",
+      "Sortering av rivningsmassor på arbetsplatsen",
+      "Krossning och återvinning av betong och tegel",
+    ],
+    season: "Året runt",
+    image: null,
+    imageAlt:
+      "EPAB-grävmaskin som river en byggnad.",
   },
   {
     slug: "vaghallning",

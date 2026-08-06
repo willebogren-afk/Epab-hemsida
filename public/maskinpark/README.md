@@ -10,10 +10,10 @@ med samma namn.
 | `snorojning.jpg` | Volvo hjullastare med vikplog, vinternatt |
 | `vaghyvel.jpg` | Caterpillar väghyvel |
 | `markberedning.jpg` | Bandgrävare med markberedningsaggregat på hygge |
-| `langgravare.jpg` | Två grävmaskiner på industrischakt |
+| `langgravare.jpg` | Två grävmaskiner på industrischakt — startsidans toppbild |
 | `forkross.jpg` | Grävmaskin som matar mobil förkross |
 | `efterkross.jpg` | Efterkross och sorteringsverk |
-| `va-schakt.jpg` | Bandgrävare vid VA-schakt i villagata — startsidans toppbild |
+| `va-schakt.jpg` | Bandgrävare vid VA-schakt i villagata — bild för Mark och schakt |
 | `hjulgravare.jpg` | Två hjulgrävare uppställda på grusplan |
 
 Använd ASCII i filnamnen (inte å, ä, ö) — det undviker teckenproblem i

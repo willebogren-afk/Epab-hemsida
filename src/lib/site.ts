@@ -11,21 +11,11 @@ export const site = {
   phone: "070 - 649 64 40",
   phoneHref: "tel:+46706496440",
   email: "kontakt@epab.se",
-  contacts: [
-    {
-      name: "Erik Gustafsson",
-      role: "Grundare och delägare",
-      phone: "070 - 649 64 40",
-      phoneHref: "tel:+46706496440",
-      email: "erik.gustafsson@epab.nu",
-    },
-    {
-      name: "Per Ringberg",
-      role: "Grundare och delägare",
-      phone: "070 - 307 89 57",
-      phoneHref: "tel:+46703078957",
-      email: "per.ringberg@epab.nu",
-    },
+  /* Direktnumren till ägarna, utan namn. Sajten ska inte namnge personer —
+     numren står för sig själva under en gemensam rubrik. */
+  directPhones: [
+    { phone: "070 - 649 64 40", phoneHref: "tel:+46706496440" },
+    { phone: "070 - 307 89 57", phoneHref: "tel:+46703078957" },
   ],
 } as const;
 
@@ -48,6 +38,8 @@ export type Service = {
   season: "Året runt" | "Vinter" | "Barmark";
   image: string;
   imageAlt: string;
+  /* Sätts bara för stående foton, som annars tappar maskinen i beskärningen. */
+  focus?: string;
 };
 
 export const services: Service[] = [
@@ -64,9 +56,10 @@ export const services: Service[] = [
       "Terrassering och finplanering",
     ],
     season: "Året runt",
-    image: "/maskinpark/langgravare.jpg",
+    image: "/maskinpark/va-schakt.jpg",
     imageAlt:
-      "Två grävmaskiner som schaktar lermassor på ett industriområde.",
+      "Orange EPAB-bandgrävare vid ett öppet VA-schakt i en villagata, med nya avloppsrör och dagvattenledning framme vid schaktkanten.",
+    focus: "50% 25%",
   },
   {
     slug: "vaghallning",
@@ -161,9 +154,9 @@ export const services: Service[] = [
  */
 export const featured = {
   hero: {
-    image: "/maskinpark/va-schakt.jpg",
-    alt: "Orange EPAB-bandgrävare vid ett öppet VA-schakt i en villagata, med nya avloppsrör och dagvattenledning framme vid schaktkanten.",
-    focus: "50% 25%",
+    image: "/maskinpark/langgravare.jpg",
+    alt: "Två orange EPAB-grävmaskiner, varav en långgrävare med utsträckt bom, som schaktar lermassor på ett industriområde.",
+    focus: "50% 50%",
   },
   fleet: {
     image: "/maskinpark/hjulgravare.jpg",

@@ -74,6 +74,7 @@ function ServiceTiles() {
                 <Photo
                   src={s.image}
                   alt={s.imageAlt}
+                  focus={s.focus}
                   sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                 />
                 <span className="display mt-5 text-2xl transition-colors duration-200 group-hover:text-[var(--color-accent-text)]">
@@ -129,8 +130,8 @@ function ContactBand() {
           Engagemang i alla uppdrag
         </h2>
         <p className="mt-5 max-w-xl text-lg leading-relaxed text-[var(--color-text-muted)]">
-          Ring Erik eller Per direkt, eller skicka en förfrågan via formuläret.
-          Vi återkommer med svar snarast.
+          Ring oss direkt, eller skicka en förfrågan via formuläret. Vi
+          återkommer med svar snarast.
         </p>
         <div className="mt-9 flex flex-wrap gap-4">
           <Link

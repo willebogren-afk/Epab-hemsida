@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Om oss",
   description:
-    "EPAB Maskintjänst AB grundades 2009 av Erik Gustafsson och Per Ringberg och utför mark- och anläggningsarbeten i Kalmar län.",
+    "EPAB Maskintjänst AB grundades 2009 och utför mark- och anläggningsarbeten i Oskarshamn, Mönsterås och övriga Kalmar län.",
 };
 
 export default function OmOssPage() {
@@ -14,7 +14,7 @@ export default function OmOssPage() {
     <>
       <PageHeader
         title="Två förare som blev ett maskinföretag"
-        lead="EPAB Maskintjänst startades 2009 av Erik Gustafsson och Per Ringberg. Sedan dess har vi vuxit till ett lag med egna maskiner och fasta uppdrag i hela Kalmar län."
+        lead="EPAB Maskintjänst startades 2009 av två maskinförare. Sedan dess har vi vuxit till ett lag med egna maskiner och fasta uppdrag i hela Kalmar län."
       />
 
       <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">
@@ -33,8 +33,8 @@ export default function OmOssPage() {
             </p>
             <p>
               Vi tror på att den som kör maskinen också ska kunna svara på
-              frågor om jobbet. Därför pratar du med Erik eller Per direkt, inte
-              med en växel.
+              frågor om jobbet. Därför pratar du med oss som utför arbetet
+              direkt, inte med en växel.
             </p>
           </div>
 
@@ -60,34 +60,35 @@ export default function OmOssPage() {
             Prata med oss direkt
           </h2>
           <ul className="mt-8 grid gap-8 sm:grid-cols-2">
-            {site.contacts.map((c) => (
+            {site.directPhones.map((c) => (
               <li
-                key={c.email}
+                key={c.phoneHref}
                 className="border-l-4 border-[var(--color-accent)] bg-[var(--color-paper-2)] p-7"
               >
                 <p className="display text-xs tracking-[0.16em] text-[var(--color-accent-text)]">
-                  {c.role}
+                  Telefon
                 </p>
-                <h3 className="display mt-2 text-2xl">{c.name}</h3>
-                <p className="mt-4">
+                <p className="mt-2">
                   <a
                     href={c.phoneHref}
-                    className="cursor-pointer font-semibold tabular-nums transition-colors duration-200 hover:text-[var(--color-brand-deep)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
+                    className="display cursor-pointer text-2xl tabular-nums transition-colors duration-200 hover:text-[var(--color-brand-deep)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
                   >
                     {c.phone}
-                  </a>
-                </p>
-                <p className="mt-1">
-                  <a
-                    href={`mailto:${c.email}`}
-                    className="cursor-pointer break-all text-[var(--color-text-muted)] transition-colors duration-200 hover:text-[var(--color-brand-deep)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
-                  >
-                    {c.email}
                   </a>
                 </p>
               </li>
             ))}
           </ul>
+          <p className="mt-6 text-[var(--color-text-muted)]">
+            Eller mejla{" "}
+            <a
+              href={`mailto:${site.email}`}
+              className="cursor-pointer font-semibold transition-colors duration-200 hover:text-[var(--color-brand-deep)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
+            >
+              {site.email}
+            </a>
+            .
+          </p>
         </section>
 
         <div className="mt-14 flex flex-wrap gap-4">

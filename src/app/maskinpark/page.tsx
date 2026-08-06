@@ -13,10 +13,7 @@ export const metadata: Metadata = {
 export default function MaskinparkPage() {
   return (
     <>
-      <PageHeader
-        title="Maskinerna vi kör"
-        lead="Alla maskiner är våra egna och körs av våra egna förare. Aggregaten byts efter säsong, så samma hjullastare sopar på våren och plogar på vintern."
-      />
+      <PageHeader title="Maskinerna vi kör" />
 
       <div className="bg-[var(--color-paper-2)]">
         <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">

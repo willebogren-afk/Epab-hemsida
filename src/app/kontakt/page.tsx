@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Kontakt",
   description:
-    "Kontakta EPAB Maskintjänst AB i Fliseryd. Ring Erik Gustafsson eller Per Ringberg direkt, eller skicka en förfrågan.",
+    "Kontakta EPAB Maskintjänst AB i Fliseryd. Ring oss direkt eller skicka en förfrågan via formuläret.",
 };
 
 export default function KontaktPage() {
@@ -14,7 +14,7 @@ export default function KontaktPage() {
     <>
       <PageHeader
         title="Välkommen att kontakta oss"
-        lead="Har du tankar och funderingar kring våra tjänster? Ring Erik eller Per direkt, eller använd formuläret. Vi återkommer med svar snarast."
+        lead="Har du tankar och funderingar kring våra tjänster? Ring oss direkt, eller använd formuläret. Vi återkommer med svar snarast."
       />
 
       <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
@@ -49,31 +49,20 @@ export default function KontaktPage() {
 
           <section>
             <h2 className="display text-2xl tracking-[0.03em]">
-              Personlig kontakt
+              Ring oss direkt
             </h2>
-            <ul className="mt-4 space-y-6">
-              {site.contacts.map((c) => (
+            <ul className="mt-4 space-y-3">
+              {site.directPhones.map((c) => (
                 <li
-                  key={c.email}
+                  key={c.phoneHref}
                   className="border-l-4 border-[var(--color-accent)] pl-5"
                 >
-                  <p className="display text-xl">{c.name}</p>
-                  <p className="mt-1">
-                    <a
-                      href={c.phoneHref}
-                      className="cursor-pointer font-semibold tabular-nums transition-colors duration-200 hover:text-[var(--color-brand-deep)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
-                    >
-                      {c.phone}
-                    </a>
-                  </p>
-                  <p>
-                    <a
-                      href={`mailto:${c.email}`}
-                      className="cursor-pointer break-all text-[var(--color-text-muted)] transition-colors duration-200 hover:text-[var(--color-brand-deep)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
-                    >
-                      {c.email}
-                    </a>
-                  </p>
+                  <a
+                    href={c.phoneHref}
+                    className="display cursor-pointer text-xl tabular-nums transition-colors duration-200 hover:text-[var(--color-brand-deep)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
+                  >
+                    {c.phone}
+                  </a>
                 </li>
               ))}
             </ul>

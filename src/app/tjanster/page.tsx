@@ -27,6 +27,7 @@ export default function TjansterPage() {
                   <Photo
                     src={s.image}
                     alt={s.imageAlt}
+                    focus={s.focus}
                     className={i % 2 === 1 ? "lg:order-2" : ""}
                     sizes="(min-width: 1024px) 50vw, 100vw"
                   />

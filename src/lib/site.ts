@@ -121,15 +121,15 @@ export const services: Service[] = [
   },
   {
     slug: "skogsarbete",
-    tileTitle: "Skog & mark",
-    title: "Skogsarbete och markberedning",
+    tileTitle: "Skogsväg & mark",
+    title: "Skogsvägsbyggnation och markberedning",
     summary:
-      "Stubbrytning, markberedning och röjning inför plantering och anläggning.",
+      "Nya skogsbilvägar, upprustning av befintliga vägar och markberedning inför plantering.",
     details: [
+      "Nybyggnad av skogsbilvägar",
+      "Upprustning, dikning och trumbyten",
+      "Vändplaner och avlägg",
       "Markberedning inför plantering",
-      "Stubbrytning och stubbfräsning",
-      "Röjning av tomt och vägkant",
-      "Uttransport av ris och rotvältor",
     ],
     season: "Barmark",
     image: "/maskinpark/markberedning.jpg",

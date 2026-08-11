@@ -34,6 +34,8 @@ export type Service = {
      ovanpå ett foto. */
   tileTitle: string;
   summary: string;
+  /* Den långa texten på tjänstesidan. Finns den ersätter den punktlistan. */
+  body?: string[];
   details: string[];
   season: "Året runt" | "Vinter" | "Barmark";
   /* null tills fotot finns — då visas en märkt platshållare i stället för
@@ -50,7 +52,13 @@ export const services: Service[] = [
     tileTitle: "Mark & schakt",
     title: "Mark och schakt",
     summary:
-      "Grundläggning, VA-schakt, dränering och finplanering med grävmaskiner från 3 till 30 ton.",
+      "Nyförläggning, reparation och förnyelse av fjärrvärme, fiber och VA-nät.",
+    body: [
+      "En driftsäker infrastruktur under mark är för många en självklarhet, men det ställer höga krav på utförandet.",
+      "Vi har hög kompetens inom detta område och arbetar dagligen med nyförläggning, reparationer och förnyelse av både fjärrvärme, fiber och vatten & avloppsnät.",
+      "Vår personal har flertalet utbildningar inom bland annat livsmedelshygien, ledningssvetsning och förläggningstekniker. Detta i kombination med lång erfarenhet borgar för god kvalitet och driftsäkerhet.",
+      "Vi har också byggt flertalet pumpstationer och tryckstegringsstationer samt både byggt och renoverat vattenverk och avloppsreningsverk.",
+    ],
     details: [
       "Husgrunder och plattor",
       "VA-ledningar och servisanslutningar",

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Photo } from "@/components/photo";
 import { Slideshow } from "@/components/slideshow";
-import { featured, gallery, services, site } from "@/lib/site";
+import { gallery, services, site } from "@/lib/site";
 
 export default function Home() {
   return (
@@ -96,13 +96,6 @@ function FleetBand() {
           vikplog och sandspridare på vintern.
         </p>
       </div>
-      <Photo
-        src={featured.fleet.image}
-        alt={featured.fleet.alt}
-        ratio="aspect-[16/9]"
-        focus={featured.fleet.focus}
-        sizes="100vw"
-      />
     </section>
   );
 }

@@ -31,7 +31,7 @@ export default function KontaktPage() {
               <p className="pt-2">
                 <a
                   href={site.phoneHref}
-                  className="cursor-pointer font-semibold tabular-nums transition-colors duration-200 hover:text-[var(--color-brand-deep)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
+                  className="inline-block cursor-pointer py-1.5 font-semibold tabular-nums transition-colors duration-200 hover:text-[var(--color-brand-deep)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
                 >
                   tel. {site.phone}
                 </a>
@@ -39,7 +39,7 @@ export default function KontaktPage() {
               <p>
                 <a
                   href={`mailto:${site.email}`}
-                  className="cursor-pointer text-[var(--color-text-muted)] transition-colors duration-200 hover:text-[var(--color-brand-deep)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
+                  className="inline-block cursor-pointer py-1.5 text-[var(--color-text-muted)] transition-colors duration-200 hover:text-[var(--color-brand-deep)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
                 >
                   {site.email}
                 </a>
@@ -59,7 +59,7 @@ export default function KontaktPage() {
                 >
                   <a
                     href={c.phoneHref}
-                    className="display cursor-pointer text-xl tabular-nums transition-colors duration-200 hover:text-[var(--color-brand-deep)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
+                    className="display inline-block cursor-pointer py-2 text-xl tabular-nums transition-colors duration-200 hover:text-[var(--color-brand-deep)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
                   >
                     {c.phone}
                   </a>

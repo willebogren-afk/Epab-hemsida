@@ -16,7 +16,7 @@ export function SiteFooter() {
 
         <div>
           <h2 className="display text-xl tracking-[0.06em]">Kontakt</h2>
-          <ul className="mt-5 space-y-3 text-[var(--color-on-brand-muted)]">
+          <ul className="mt-5 space-y-2 text-[var(--color-on-brand-muted)]">
             <li className="leading-relaxed">
               {site.name}
               <br />
@@ -27,7 +27,7 @@ export function SiteFooter() {
             <li>
               <a
                 href={site.phoneHref}
-                className="cursor-pointer font-semibold text-[var(--color-on-brand)] underline decoration-[var(--color-on-brand)] decoration-2 underline-offset-4 transition-colors duration-200 hover:text-[var(--color-on-brand)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-on-brand)]"
+                className="inline-block cursor-pointer py-1.5 font-semibold text-[var(--color-on-brand)] underline decoration-[var(--color-on-brand)] decoration-2 underline-offset-4 transition-colors duration-200 hover:text-[var(--color-on-brand)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-on-brand)]"
               >
                 {site.phone}
               </a>
@@ -35,7 +35,7 @@ export function SiteFooter() {
             <li>
               <a
                 href={`mailto:${site.email}`}
-                className="cursor-pointer transition-colors duration-200 hover:text-[var(--color-on-brand)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-on-brand)]"
+                className="inline-block cursor-pointer py-1.5 transition-colors duration-200 hover:text-[var(--color-on-brand)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-on-brand)]"
               >
                 {site.email}
               </a>
@@ -45,12 +45,12 @@ export function SiteFooter() {
 
         <div>
           <h2 className="display text-xl tracking-[0.06em]">Tjänster</h2>
-          <ul className="mt-5 space-y-2">
+          <ul className="mt-5 space-y-1">
             {services.map((s) => (
               <li key={s.slug}>
                 <Link
                   href={`/tjanster#${s.slug}`}
-                  className="cursor-pointer text-[var(--color-on-brand-muted)] transition-colors duration-200 hover:text-[var(--color-on-brand)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-on-brand)]"
+                  className="inline-block cursor-pointer py-1.5 text-[var(--color-on-brand-muted)] transition-colors duration-200 hover:text-[var(--color-on-brand)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-on-brand)]"
                 >
                   {s.title}
                 </Link>
@@ -61,12 +61,12 @@ export function SiteFooter() {
 
         <div>
           <h2 className="display text-xl tracking-[0.06em]">Genvägar</h2>
-          <ul className="mt-5 space-y-2">
+          <ul className="mt-5 space-y-1">
             {nav.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="cursor-pointer text-[var(--color-on-brand-muted)] transition-colors duration-200 hover:text-[var(--color-on-brand)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-on-brand)]"
+                  className="inline-block cursor-pointer py-1.5 text-[var(--color-on-brand-muted)] transition-colors duration-200 hover:text-[var(--color-on-brand)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-on-brand)]"
                 >
                   {item.label}
                 </Link>

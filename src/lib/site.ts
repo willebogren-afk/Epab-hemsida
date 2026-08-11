@@ -184,12 +184,3 @@ export const gallery: Slide[] = [
     alt: "Hjullastare med vikplog som plogar en snötäckt landsväg i mörker, med arbetsbelysningen tänd.",
   },
 ];
-
-/** Bilderna som bär startsidan, utanför tjänstelistan. */
-export const featured = {
-  fleet: {
-    image: "/maskinpark/snorojning.jpg",
-    alt: "Hjullastare med vikplog som plogar en snötäckt landsväg i mörker, med arbetsbelysningen tänd.",
-    focus: "50% 50%",
-  },
-} as const;

@@ -22,8 +22,6 @@ export const site = {
 export const nav = [
   { href: "/", label: "Hem" },
   { href: "/tjanster", label: "Tjänster" },
-  { href: "/maskinpark", label: "Maskinpark" },
-  { href: "/om-oss", label: "Om oss" },
   { href: "/kontakt", label: "Kontakt" },
 ] as const;
 
@@ -123,7 +121,7 @@ export const services: Service[] = [
     tileTitle: "Vägunderhåll",
     title: "Vägunderhåll",
     summary:
-      "Hyvling, sopning, kantklippning och vinterväghållning av vägar, planer och industriytor.",
+      "Hyvling, sopning, kantklippning och vinterväghållning av vägar.",
     details: [
       "Väghyvling – jämnar till vägbanan, fyller igen hjulspår och potthål samt korrigerar tvärfallet för bättre avvattning och framkomlighet",
       "Sopning – rent och framkomligt vägnät, fritt från sand, grus och skräp",
@@ -139,10 +137,7 @@ export const services: Service[] = [
   },
 ];
 
-/**
- * Bilderna som bär startsidan. Ligger här i stället för som index i
- * machines[], så att maskinlistan kan växa utan att startsidan byter foto.
- */
+/** Bilderna som bär startsidan, utanför tjänstelistan. */
 export const featured = {
   hero: {
     image: "/maskinpark/langgravare.jpg",
@@ -155,104 +150,3 @@ export const featured = {
     focus: "50% 50%",
   },
 } as const;
-
-export type Machine = {
-  name: string;
-  weight: string;
-  attachments: string[];
-  note: string;
-  /* Sökväg under /public. Visas automatiskt så fort filen finns på plats. */
-  image: string | null;
-  imageAlt: string;
-  /* Sätts bara för stående foton, som annars tappar maskinen i beskärningen. */
-  focus?: string;
-};
-
-export const machines: Machine[] = [
-  {
-    name: "Volvo hjullastare med sopaggregat",
-    weight: "ca 14 ton",
-    attachments: ["Holms sopvals", "Vattentank", "Sidoborste"],
-    note: "Vårsopning av vägar och parkeringar med dammbindning.",
-    image: "/maskinpark/sopning.jpg",
-    imageAlt:
-      "Volvo hjullastare med Holms sopaggregat som sopar kanten på en villagata en solig vårdag.",
-  },
-  {
-    name: "Volvo hjullastare med vikplog",
-    weight: "ca 14 ton",
-    attachments: ["Vikplog", "Sandspridare", "Extraljusramp"],
-    note: "Vinterjour, plogning och halkbekämpning dygnet runt.",
-    image: "/maskinpark/snorojning.jpg",
-    imageAlt:
-      "Volvo hjullastare med vikplog som plogar en snötäckt landsväg i mörker, med arbetsbelysningen tänd.",
-  },
-  {
-    name: "Caterpillar väghyvel",
-    weight: "ca 18 ton",
-    attachments: ["Hyvelblad", "GPS-styrning", "Ripper"],
-    note: "Hyvling och profilering av grusvägar och planer.",
-    image: "/maskinpark/vaghyvel.jpg",
-    imageAlt:
-      "Gul Caterpillar väghyvel som profilerar en nyanlagd grusyta.",
-  },
-  {
-    name: "Bandgrävare 25 ton",
-    weight: "ca 25 ton",
-    attachments: [
-      "Markberedningsaggregat",
-      "Betongkross",
-      "Betongsax",
-      "Rivningsgrip",
-      "Hydraulhammare",
-      "Rototilt",
-    ],
-    note: "Byter redskap efter uppdrag: markberedning och högläggning på hygge, rivning av byggnader och betongkonstruktioner.",
-    image: "/maskinpark/markberedning.jpg",
-    imageAlt:
-      "Orange EPAB-bandgrävare på ett hygge med markberedningsaggregat lyft högt i luften.",
-  },
-  {
-    name: "Två hjulgrävare DX160W",
-    weight: "ca 17 ton/st",
-    attachments: [
-      "Tiltrotator",
-      "Planeringsblad",
-      "Grävskopor",
-      "Kantklippare",
-      "Högröjningsaggregat",
-    ],
-    note: "Går på egna hjul mellan tomter och gator. Används för ledningsarbeten i tätort, där bandgående maskiner sliter på asfalten, och för kantklippning och grensågning längs vägarna.",
-    image: "/maskinpark/hjulgravare.jpg",
-    imageAlt:
-      "Två orange EPAB-hjulgrävare uppställda intill varandra på ett grusupplag, med en maskintrailer bakom och en industribyggnad i bakgrunden.",
-    focus: "50% 25%",
-  },
-  {
-    name: "Långgrävare för schakt",
-    weight: "ca 30 ton",
-    attachments: ["Långbom", "Planeringsskopa", "Rototilt"],
-    note: "Djupschakt, dammarbeten och massförflyttning.",
-    image: "/maskinpark/langgravare.jpg",
-    imageAlt:
-      "Två orange EPAB-grävmaskiner, varav en långgrävare, som schaktar lermassor på ett industriområde.",
-  },
-  {
-    name: "Mobil förkross med matargrävare",
-    weight: "ca 30 ton kross",
-    attachments: ["Käftkross", "Matargrävare", "Transportband"],
-    note: "Krossning av sprängsten och rivningsmassor direkt på plats.",
-    image: "/maskinpark/forkross.jpg",
-    imageAlt:
-      "Orange EPAB-grävmaskin som matar en mobil förkross, med en hög färdigkrossat material framför transportbandet.",
-  },
-  {
-    name: "Mobil efterkross och sorteringsverk",
-    weight: "ca 25 ton",
-    attachments: ["Konkross", "Sorteringsverk", "Tre utlastningsband"],
-    note: "Siktning och färdigställning av bärlager och makadam.",
-    image: "/maskinpark/efterkross.jpg",
-    imageAlt:
-      "Mobilt efterkross- och sorteringsverk med en hög färdigsiktad makadam framför sig.",
-  },
-];

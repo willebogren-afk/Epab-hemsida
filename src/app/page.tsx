@@ -19,12 +19,8 @@ function Hero() {
       <div className="bg-[var(--color-brand)] text-[var(--color-on-brand)]">
         <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">
           <h1 className="display max-w-3xl text-[clamp(2.4rem,7vw,4.5rem)]">
-            Vi förverkligar era visioner
+            Vi bygger vägen mot framtiden
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[var(--color-on-brand-muted)]">
-            Med engagerad personal och drivna ägare gräver och häver vi oss in
-            i framtiden.
-          </p>
           <div className="mt-9 flex flex-wrap gap-4">
             <Link
               href="/kontakt"
@@ -105,12 +101,6 @@ function FleetBand() {
           krossverk. Hjullastarna byter aggregat efter säsong: sopvals på våren,
           vikplog och sandspridare på vintern.
         </p>
-        <Link
-          href="/maskinpark"
-          className="display mt-9 inline-flex min-h-[54px] cursor-pointer items-center rounded-full border-2 border-[var(--color-on-brand)] px-9 text-xl tracking-[0.04em] transition-colors duration-200 hover:bg-[var(--color-on-brand)] hover:text-[var(--color-brand)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-on-brand)]"
-        >
-          Se maskinparken
-        </Link>
       </div>
       <Photo
         src={featured.fleet.image}

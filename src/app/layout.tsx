@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Oswald, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
-import { SiteHeader } from "@/components/site-header";
-import { SiteFooter } from "@/components/site-footer";
 import { site } from "@/lib/site";
 
 const oswald = Oswald({
@@ -57,17 +55,7 @@ export default function RootLayout({
       className={`${oswald.variable} ${sourceSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[var(--color-paper)]">
-        <a
-          href="#innehall"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-[var(--color-brand)] focus:px-4 focus:py-3 focus:font-bold focus:text-[var(--color-on-brand)] focus:outline-4 focus:outline-[var(--color-accent)]"
-        >
-          Hoppa till innehåll
-        </a>
-        <SiteHeader />
-        <main id="innehall" className="flex-1">
-          {children}
-        </main>
-        <SiteFooter />
+        {children}
       </body>
     </html>
   );

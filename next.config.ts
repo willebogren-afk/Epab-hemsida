@@ -2,6 +2,13 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /**
+   * Bildoptimeraren släpper bara igenom kvalitetsnivåer som står här. Utan
+   * 90 i listan tystnar quality={90} på bildspelet — adressen skrivs ändå
+   * med q=75 och bilderna blir mjukare än avsett.
+   */
+  images: { qualities: [75, 90] },
+
+  /**
    * Spärr mot sökmotorer så länge sajten bara ligger på förhandsvisnings-
    * adressen. Den innehåller EPAB:s skarpa uppgifter och ska inte kunna
    * dyka upp i Google och förväxlas med deras riktiga sida.

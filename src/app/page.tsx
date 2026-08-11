@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Photo } from "@/components/photo";
-import { featured, services, site } from "@/lib/site";
+import { Slideshow } from "@/components/slideshow";
+import { featured, gallery, services, site } from "@/lib/site";
 
 export default function Home() {
   return (
@@ -38,16 +39,9 @@ function Hero() {
         </div>
       </div>
 
-      {/* Fotot står för sig självt, i hela sin bredd och sina egna
-          proportioner. Ingenting ligger ovanpå det. */}
-      <Photo
-        src={featured.hero.image}
-        alt={featured.hero.alt}
-        ratio="aspect-[16/9]"
-        focus={featured.hero.focus}
-        priority
-        sizes="100vw"
-      />
+      {/* Bildspelet står för sig självt, i hela sin bredd. Ingen text ligger
+          ovanpå fotona. */}
+      <Slideshow slides={gallery} />
     </section>
   );
 }

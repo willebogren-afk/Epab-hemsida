@@ -137,13 +137,56 @@ export const services: Service[] = [
   },
 ];
 
-/** Bilderna som bär startsidan, utanför tjänstelistan. */
-export const featured = {
-  hero: {
+export type Slide = {
+  image: string;
+  alt: string;
+  focus?: string;
+};
+
+/** Bildspelet högst upp på startsidan — maskinerna, ett foto i taget. */
+export const gallery: Slide[] = [
+  {
     image: "/maskinpark/langgravare.jpg",
     alt: "Två orange EPAB-grävmaskiner, varav en långgrävare med utsträckt bom, som schaktar lermassor på ett industriområde.",
-    focus: "50% 50%",
   },
+  {
+    image: "/maskinpark/va-schakt.jpg",
+    alt: "Orange EPAB-bandgrävare vid ett öppet VA-schakt i en villagata, med nya avloppsrör och dagvattenledning framme vid schaktkanten.",
+    focus: "50% 25%",
+  },
+  {
+    image: "/maskinpark/hjulgravare.jpg",
+    alt: "Två orange EPAB-hjulgrävare uppställda intill varandra på ett grusupplag, med en maskintrailer bakom.",
+    focus: "50% 15%",
+  },
+  {
+    image: "/maskinpark/markberedning.jpg",
+    alt: "Orange EPAB-bandgrävare på ett hygge med markberedningsaggregatet lyft högt i luften.",
+  },
+  {
+    image: "/maskinpark/vaghyvel.jpg",
+    alt: "Caterpillar väghyvel som profilerar en nyanlagd grusyta.",
+  },
+  {
+    image: "/maskinpark/forkross.jpg",
+    alt: "Orange EPAB-grävmaskin som matar en mobil förkross, med en hög färdigkrossat material framför transportbandet.",
+  },
+  {
+    image: "/maskinpark/efterkross.jpg",
+    alt: "Mobilt efterkross- och sorteringsverk med en hög färdigsiktad makadam framför sig.",
+  },
+  {
+    image: "/maskinpark/sopning.jpg",
+    alt: "Volvo hjullastare med sopaggregat som sopar kanten på en villagata en solig vårdag.",
+  },
+  {
+    image: "/maskinpark/snorojning.jpg",
+    alt: "Hjullastare med vikplog som plogar en snötäckt landsväg i mörker, med arbetsbelysningen tänd.",
+  },
+];
+
+/** Bilderna som bär startsidan, utanför tjänstelistan. */
+export const featured = {
   fleet: {
     image: "/maskinpark/snorojning.jpg",
     alt: "Hjullastare med vikplog som plogar en snötäckt landsväg i mörker, med arbetsbelysningen tänd.",

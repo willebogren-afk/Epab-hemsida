@@ -7,7 +7,7 @@ import { machines, site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Maskinpark",
   description:
-    "EPAB:s maskinpark: hjullastare med sop- och plogaggregat, väghyvel, markberedare, hjulgrävare, långgrävare och mobila krossverk.",
+    "EPAB:s maskinpark: hjullastare med sop- och plogaggregat, väghyvel, hjulgrävare, bandgrävare med rivningsredskap, långgrävare och mobila krossverk.",
 };
 
 export default function MaskinparkPage() {

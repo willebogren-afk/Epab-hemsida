@@ -17,6 +17,13 @@ type PhotoProps = {
   className?: string;
   priority?: boolean;
   sizes?: string;
+  /**
+   * Vad som händer när src är null, alltså när tjänsten saknar foto.
+   * "hide" tar bort rutan helt — bra när texten kan breda ut sig i stället.
+   * "space" lämnar en lugn, tom yta i samma format, så att ett rutnät med
+   * bilder bredvid inte hoppar ur linje.
+   */
+  whenEmpty?: "hide" | "space";
 };
 
 /**
@@ -34,8 +41,22 @@ export function Photo({
   className = "",
   priority = false,
   sizes = "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw",
+  whenEmpty = "hide",
 }: PhotoProps) {
-  if (src && existsInPublic(src)) {
+  /* Inget foto utpekat. Ingen bild alls är ärligare än en bild som
+     föreställer fel sak — frågan är bara om ytan ska bort eller stå kvar
+     tom för layoutens skull. */
+  if (!src) {
+    if (whenEmpty === "hide") return null;
+    return (
+      <div
+        aria-hidden="true"
+        className={`${ratio} bg-[var(--color-paper-3)] ${className}`}
+      />
+    );
+  }
+
+  if (existsInPublic(src)) {
     return (
       <div className={`relative overflow-hidden ${ratio} ${className}`}>
         <Image
@@ -60,7 +81,7 @@ export function Photo({
       </span>
       <span className="flex flex-col gap-1 text-sm leading-snug text-[var(--color-text-muted)]">
         <span>{alt}</span>
-        {src && <code className="text-xs opacity-70">public{src}</code>}
+        <code className="text-xs opacity-70">public{src}</code>
       </span>
     </div>
   );

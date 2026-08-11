@@ -75,6 +75,7 @@ function ServiceTiles() {
                   src={s.image}
                   alt={s.imageAlt}
                   focus={s.focus}
+                  whenEmpty="space"
                   sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                 />
                 <span className="display mt-5 text-2xl transition-colors duration-200 group-hover:text-[var(--color-accent-text)]">

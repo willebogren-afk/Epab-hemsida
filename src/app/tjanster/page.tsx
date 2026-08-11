@@ -23,7 +23,11 @@ export default function TjansterPage() {
           <ul className="space-y-16 sm:space-y-20">
             {services.map((s, i) => (
               <li key={s.slug} id={s.slug} className="scroll-mt-28">
-                <article className="grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
+                <article
+                  className={`grid items-center gap-8 lg:gap-14 ${
+                    s.image ? "lg:grid-cols-2" : ""
+                  }`}
+                >
                   <Photo
                     src={s.image}
                     alt={s.imageAlt}
@@ -32,7 +36,7 @@ export default function TjansterPage() {
                     sizes="(min-width: 1024px) 50vw, 100vw"
                   />
 
-                  <div>
+                  <div className={s.image ? "" : "max-w-3xl"}>
                     <p className="display text-sm tracking-[0.18em] text-[var(--color-accent-text)]">
                       {s.season}
                     </p>

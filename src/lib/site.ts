@@ -39,8 +39,8 @@ export type Service = {
   body?: string[];
   details: string[];
   season: "Året runt" | "Vinter" | "Barmark";
-  /* null tills fotot finns — då visas en märkt platshållare i stället för
-     en bild som föreställer något annat. */
+  /* null betyder att tjänsten saknar foto — då visas ingen bild alls, hellre
+     det än ett foto som föreställer något annat. */
   image: string | null;
   imageAlt: string;
   /* Sätts bara för stående foton, som annars tappar maskinen i beskärningen. */
@@ -77,10 +77,10 @@ export const services: Service[] = [
     ],
     details: [],
     season: "Året runt",
-    image: "/maskinpark/hjulgravare.jpg",
-    imageAlt:
-      "Två orange EPAB-hjulgrävare uppställda intill varandra på ett grusupplag, med en maskintrailer bakom och en industribyggnad i bakgrunden.",
-    focus: "50% 25%",
+    /* Inget foto från ett rivningsjobb finns ännu. Hellre ingen bild än en
+       bild som föreställer något annat. */
+    image: null,
+    imageAlt: "",
   },
   {
     slug: "skogsentreprenad",
@@ -197,10 +197,17 @@ export const machines: Machine[] = [
       "Gul Caterpillar väghyvel som profilerar en nyanlagd grusyta.",
   },
   {
-    name: "Bandgrävare med markberedningsaggregat",
+    name: "Bandgrävare 25 ton",
     weight: "ca 25 ton",
-    attachments: ["Markberedningsaggregat", "Rototilt", "Skopor"],
-    note: "Markberedning och högläggning inför plantering på hygge.",
+    attachments: [
+      "Markberedningsaggregat",
+      "Betongkross",
+      "Betongsax",
+      "Rivningsgrip",
+      "Hydraulhammare",
+      "Rototilt",
+    ],
+    note: "Byter redskap efter uppdrag: markberedning och högläggning på hygge, rivning av byggnader och betongkonstruktioner.",
     image: "/maskinpark/markberedning.jpg",
     imageAlt:
       "Orange EPAB-bandgrävare på ett hygge med markberedningsaggregat lyft högt i luften.",
@@ -208,8 +215,14 @@ export const machines: Machine[] = [
   {
     name: "Två hjulgrävare DX160W",
     weight: "ca 17 ton/st",
-    attachments: ["Tiltrotator", "Planeringsblad", "Grävskopor"],
-    note: "Går på egna hjul mellan tomter och gator. Används för VA-schakt och ledningsarbeten i tätort, där bandgående maskiner sliter på asfalten.",
+    attachments: [
+      "Tiltrotator",
+      "Planeringsblad",
+      "Grävskopor",
+      "Kantklippare",
+      "Högröjningsaggregat",
+    ],
+    note: "Går på egna hjul mellan tomter och gator. Används för ledningsarbeten i tätort, där bandgående maskiner sliter på asfalten, och för kantklippning och grensågning längs vägarna.",
     image: "/maskinpark/hjulgravare.jpg",
     imageAlt:
       "Två orange EPAB-hjulgrävare uppställda intill varandra på ett grusupplag, med en maskintrailer bakom och en industribyggnad i bakgrunden.",

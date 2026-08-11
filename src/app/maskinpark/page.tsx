@@ -28,15 +28,10 @@ export default function MaskinparkPage() {
                   sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                 />
                 <div className="mt-5 flex flex-1 flex-col">
-                  <div className="flex items-baseline justify-between gap-4">
-                    <span className="display text-sm tracking-[0.16em] text-[var(--color-accent-text)]">
-                      {m.category}
-                    </span>
-                    <span className="text-sm font-semibold text-[var(--color-text-muted)] tabular-nums">
-                      {m.weight}
-                    </span>
-                  </div>
-                  <h2 className="display mt-2 text-2xl">{m.name}</h2>
+                  <h2 className="display text-2xl">{m.name}</h2>
+                  <p className="mt-1 text-sm font-semibold text-[var(--color-text-muted)] tabular-nums">
+                    {m.weight}
+                  </p>
                   <p className="mt-3 flex-1 leading-relaxed text-[var(--color-text-muted)]">
                     {m.note}
                   </p>

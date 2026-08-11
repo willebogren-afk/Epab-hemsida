@@ -25,12 +25,12 @@ export const metadata: Metadata = {
     template: `%s | ${site.shortName}`,
   },
   description:
-    "EPAB Maskintjänst AB i Fliseryd utför mark och schakt, rivning, väghållning, snöröjning, sopning och skogsvägsbyggnation i Oskarshamn, Mönsterås och Kalmar län.",
+    "EPAB Maskintjänst AB i Fliseryd utför ledningsarbeten, rivningar, skogsentreprenad, krossning och vägunderhåll i Oskarshamn, Mönsterås och Kalmar län.",
   metadataBase: new URL("https://www.epab.nu"),
   openGraph: {
     title: `${site.name} — ${site.tagline}`,
     description:
-      "Mark och schakt, väghållning, snöröjning och skogsvägsbyggnation i Kalmar län sedan 2009.",
+      "Ledningsarbeten, rivningar, skogsentreprenad, krossning och vägunderhåll i Kalmar län sedan 2009.",
     locale: "sv_SE",
     type: "website",
   },

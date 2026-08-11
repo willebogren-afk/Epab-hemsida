@@ -65,10 +65,7 @@ export default function OmOssPage() {
                 key={c.phoneHref}
                 className="border-l-4 border-[var(--color-accent)] bg-[var(--color-paper-2)] p-7"
               >
-                <p className="display text-xs tracking-[0.16em] text-[var(--color-accent-text)]">
-                  Telefon
-                </p>
-                <p className="mt-2">
+                <p>
                   <a
                     href={c.phoneHref}
                     className="display cursor-pointer text-2xl tabular-nums transition-colors duration-200 hover:text-[var(--color-brand-deep)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"

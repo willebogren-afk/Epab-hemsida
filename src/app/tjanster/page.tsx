@@ -7,7 +7,7 @@ import { services, site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Tjänster",
   description:
-    "Mark och schakt, rivning, väghållning, snöröjning, sopning, skogsvägsbyggnation och krossning i Kalmar län.",
+    "Ledningsarbeten, rivningar, skogsentreprenad, krossning och sortering samt vägunderhåll i Kalmar län.",
 };
 
 export default function TjansterPage() {
@@ -39,22 +39,26 @@ export default function TjansterPage() {
                     <h2 className="display mt-2 text-[clamp(1.7rem,4vw,2.6rem)]">
                       {s.title}
                     </h2>
-                    <p className="mt-4 text-lg leading-relaxed text-[var(--color-text)]">
-                      {s.summary}
-                    </p>
-                    <ul className="mt-6 space-y-2">
-                      {s.details.map((d) => (
-                        <li key={d} className="flex items-start gap-3">
-                          <span
-                            aria-hidden="true"
-                            className="mt-2.5 h-1.5 w-5 shrink-0 bg-[var(--color-accent)]"
-                          />
-                          <span className="text-[var(--color-text-muted)]">
-                            {d}
-                          </span>
-                        </li>
+                    <div className="mt-4 space-y-4 text-lg leading-relaxed text-[var(--color-text)]">
+                      {(s.body ?? [s.summary]).map((p) => (
+                        <p key={p}>{p}</p>
                       ))}
-                    </ul>
+                    </div>
+                    {s.details.length > 0 && (
+                      <ul className="mt-6 space-y-3">
+                        {s.details.map((d) => (
+                          <li key={d} className="flex items-start gap-3">
+                            <span
+                              aria-hidden="true"
+                              className="mt-2.5 h-1.5 w-5 shrink-0 bg-[var(--color-accent)]"
+                            />
+                            <span className="leading-relaxed text-[var(--color-text-muted)]">
+                              {d}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
                 </article>
               </li>

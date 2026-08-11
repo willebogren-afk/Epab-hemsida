@@ -27,6 +27,16 @@ export const metadata: Metadata = {
   description:
     "EPAB Maskintjänst AB i Fliseryd utför ledningsarbeten, rivningar, skogsentreprenad, krossning och vägunderhåll i Oskarshamn, Mönsterås och Kalmar län.",
   metadataBase: new URL("https://www.epab.nu"),
+  /* Spärr mot sökmotorer under förhandsvisningen. Sidorna får aktivt
+     krypas — det är så robotarna hinner läsa noindex och håller adressen
+     borta ur resultaten. En Disallow i robots.txt hade i stället hindrat
+     dem från att läsa spärren. Tas bort tillsammans med X-Robots-Tag i
+     next.config.ts när sajten flyttar till epab.nu. */
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: { index: false, follow: false },
+  },
   openGraph: {
     title: `${site.name} — ${site.tagline}`,
     description:

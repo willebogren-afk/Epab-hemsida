@@ -22,8 +22,8 @@ function Hero() {
             Vi förverkligar era visioner
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[var(--color-on-brand-muted)]">
-            Med engagerad personal och drivna ägare tar vi oss an både små och
-            stora projekt.
+            Med engagerad personal och drivna ägare gräver och häver vi oss in
+            i framtiden.
           </p>
           <div className="mt-9 flex flex-wrap gap-4">
             <Link
@@ -84,13 +84,6 @@ function ServiceTiles() {
               <p className="mt-3 leading-relaxed text-[var(--color-text-muted)]">
                 {s.summary}
               </p>
-              <Link
-                href={`/tjanster#${s.slug}`}
-                className="mt-3 inline-flex w-fit cursor-pointer items-center gap-2 font-semibold text-[var(--color-accent-text)] underline decoration-2 underline-offset-4 transition-colors duration-200 hover:text-[var(--color-brand-deep)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
-              >
-                Läs mer om {s.title.toLowerCase()}
-                <span aria-hidden="true">→</span>
-              </Link>
             </li>
           ))}
         </ul>

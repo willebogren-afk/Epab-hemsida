@@ -5,9 +5,35 @@ export async function middleware(request: NextRequest) {
   const hemligt = losenord();
   if (!hemligt) return NextResponse.next();
 
+  const avtryck = await fingeravtryck(hemligt);
+
   const kaka = request.cookies.get(KAK_NAMN)?.value;
-  if (kaka && likaVarden(kaka, await fingeravtryck(hemligt))) {
+  if (kaka && likaVarden(kaka, avtryck)) {
     return NextResponse.next();
+  }
+
+  /**
+   * Inloggningslänk: ?nyckel=<lösenordet> släpper in direkt, utan att kunden
+   * behöver skriva något. Nyckeln plockas bort ur adressen med en gång, så
+   * lösenordet inte ligger kvar i adressfältet, i historiken eller i en
+   * skärmdump kunden råkar skicka vidare.
+   */
+  const nyckel = request.nextUrl.searchParams.get("nyckel");
+  if (nyckel && likaVarden(await fingeravtryck(nyckel), avtryck)) {
+    const ren = new URL(request.url);
+    ren.searchParams.delete("nyckel");
+    const slapp = NextResponse.redirect(ren, 303);
+    slapp.cookies.set({
+      name: KAK_NAMN,
+      value: avtryck,
+      httpOnly: true,
+      sameSite: "lax",
+      secure: request.nextUrl.protocol === "https:",
+      path: "/",
+      maxAge: 60 * 60 * 24 * 30,
+    });
+    slapp.headers.set("Cache-Control", "no-store");
+    return slapp;
   }
 
   /* Adressen behålls, bara innehållet byts ut. Då hamnar besökaren på rätt
